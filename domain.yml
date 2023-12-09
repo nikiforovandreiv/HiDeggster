@@ -1,0 +1,71 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - help
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - persona_question
+  - german_courses
+  - application_choice
+  - application_info
+
+responses:
+  utter_greet:
+  - text: "Hello! How can I help you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_anything_else:
+  - text: "Did that help you? Or do you want to know more about anything else?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Goodbye!"
+
+  utter_farewell:
+    - text: "Great! When you will have more questions I will be happy to answer them!"
+  utter_german_courses:
+    - text: "Attending a German language course is obligatory for all exchange students.
+
+You can expect an extensive range of courses on the levels A1 to C1, which will enable you to improve
+and extend your German language skills and at the same time get to know Germany and the German culture better.
+
+You can obtain official certificates for German as a foreign language directly here at the DIT (TestDAF, telc)."
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_help:
+  - text: "You can ask me about german courses, application, orientation week, exchange semester course choices
+  and student reviews!"
+
+  utter_application_choice:
+    - text: " Do you want to know about language skills, application period or how to apply?"
+
+  utter_persona_info:
+    - text: "My name is Deggster and I am happy to be your International exchange companion !!!"
+actions:
+  - action_application_info
+
+entities:
+- application_section
+
+slots:
+  application_section:
+    type: text
+    mappings:
+      - type: from_text
+        intent: application_choice
+        role: target
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

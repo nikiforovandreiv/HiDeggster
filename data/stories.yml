@@ -1,0 +1,30 @@
+version: "3.1"
+
+stories:
+
+- story: Ask about german courses
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: german_courses
+  - action: utter_german_courses
+  - action: utter_anything_else
+  - intent: deny
+  - action: utter_farewell
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Ask about application
+  steps:
+      - intent: greet
+      - action: utter_greet
+      - action: utter_help
+      - intent: application_info
+      - action: utter_application_choice
+      - intent: application_choice
+      - action: action_application_info
+      - action: utter_anything_else
+      - intent: deny
+      - action: utter_farewell
+      - intent: goodbye
+      - action: utter_goodbye

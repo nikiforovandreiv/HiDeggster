@@ -1,0 +1,104 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: persona_question
+  examples: |
+    - Who are you
+    - Tell me about you
+    - You are
+    - And you are
+    - Who are you
+    - Who am i talking to
+    - Who is this
+
+- intent: help
+  examples: |
+    - Help
+    - I need help
+    - Can you help?
+    - What do I do?
+    - How does this work?
+    - Explain, please
+    - Can you explain that?
+    - I'm stuck
+    - I'm lost
+    - Assistance required
+    - Guide me through this
+    - Can you assist with this issue?
+    - Clarify, please
+    - Any guidance?
+    - Please explain
+
+- intent: german_courses
+  examples: |
+    - Tell me more about german courses
+    - german courses please
+    - courses
+    - german
+
+- intent: application_info
+  examples: |
+    - Tell me more about application
+    - application please
+    - application
+
+- intent: application_choice
+  examples: |
+    - I want information about [language skills](application_section)
+    - Tell me about [application](application_section)
+    - [language skills](applicaion_section)
+    - [How to apply]?(application_section)
+    - [application] please(application_section)
+    - [language skills](application_section)
+
+entities:
+- application_section
+
