@@ -4,15 +4,15 @@ stories:
 
 - story: Ask about german courses
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: german_courses
-  - action: utter_german_courses
-  - action: utter_anything_else
-  - intent: deny
-  - action: utter_farewell
-  - intent: goodbye
-  - action: utter_goodbye
+      - intent: greet
+      - action: utter_greet
+      - intent: german_courses
+      - action: utter_german_courses
+      - action: utter_anything_else
+      - intent: deny
+      - action: utter_farewell
+      - intent: goodbye
+      - action: utter_goodbye
 
 - story: Ask about application
   steps:
@@ -21,10 +21,25 @@ stories:
       - action: utter_help
       - intent: application_info
       - action: utter_application_choice
-      - intent: application_choice
-      - action: action_application_info
+      - intent: language_requirements
+      - action: utter_language_requirements
       - action: utter_anything_else
       - intent: deny
       - action: utter_farewell
       - intent: goodbye
       - action: utter_goodbye
+
+- story: User wants information about application period
+  steps:
+      - intent: application_period
+      - action: utter_application_period
+
+- story: User wants information on how to apply
+  steps:
+      - intent: how_to_apply
+      - action: utter_how_to_apply
+
+- story: User wants information about language requirements
+  steps:
+      - intent: language_requirements
+      - action: utter_language_requirements

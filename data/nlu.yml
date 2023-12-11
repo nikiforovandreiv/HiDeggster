@@ -90,15 +90,31 @@ nlu:
     - application please
     - application
 
-- intent: application_choice
+- intent: application_period
   examples: |
-    - I want information about [language skills](application_section)
-    - Tell me about [application](application_section)
-    - [language skills](applicaion_section)
-    - [How to apply]?(application_section)
-    - [application] please(application_section)
-    - [language skills](application_section)
+    - Application period please
+    - Application period
+    - When is the application period for October entries?
+    - What are the application dates for March entries?
+    - Could you tell me about the application timeline?
+    - From when to when can I apply for the October intake?
+    - What are the deadlines for application submissions?
 
-entities:
-- application_section
+- intent: how_to_apply
+  examples: |
+    - How to apply
+    - How do I apply to your university?
+    - What is the application process?
+    - Can you guide me through the application procedure?
+    - I need information on how to submit my application.
+    - Where can I find the application form?
 
+- intent: language_requirements
+  examples: |
+    - Language requirements
+    - Language requirements please
+    - Are there any language requirements for admission?
+    - Do I need language certificates to apply?
+    - What language skills are necessary for admission?
+    - Could you tell me about the language proficiency needed?
+    - Are language tests mandatory for the application?

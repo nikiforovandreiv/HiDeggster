@@ -12,20 +12,16 @@ intents:
   - german_courses
   - application_choice
   - application_info
+  - application_period
+  - how_to_apply
+  - language_requirements
 
 responses:
   utter_greet:
   - text: "Hello! How can I help you?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
   utter_anything_else:
   - text: "Did that help you? Or do you want to know more about anything else?"
-
-  utter_happy:
-  - text: "Great, carry on!"
 
   utter_goodbye:
   - text: "Goodbye!"
@@ -52,19 +48,27 @@ You can obtain official certificates for German as a foreign language directly h
 
   utter_persona_info:
     - text: "My name is Deggster and I am happy to be your International exchange companion !!!"
-actions:
-  - action_application_info
 
-entities:
-- application_section
+  utter_application_period:
+    - text: "The online application portal is only activated during the following application periods:
+      - 1 April - 1 June for October entries
+      - 1 October - 1 December for March entries"
 
-slots:
-  application_section:
-    type: text
-    mappings:
-      - type: from_text
-        intent: application_choice
-        role: target
+  utter_how_to_apply:
+    - text: "View the application procedure checklist to guide you step-by-step through preparation for your exchange semester at DIT.
+
+      Exchange students apply via Mobility Online.
+      The link to access the online application form will be provided after you have offcially been nominated by your home university (free mover applicants: application link will be provided upon request).
+
+      After completing the online application form, you will receive an email containing a link and login details.
+      You then must follow the link and enter a password, before entering further details and uploading your documents (such as CV, photo, passport/national ID card, grade sheet, certificate of enrolment).
+
+      Application as an exchange student at DIT is ONLY via Mobility Online. All required documents can be uploaded and nothing should be sent through traditional post or e-mail"
+
+  utter_language_requirements:
+    - text: "All exchange students must participate in a German course during the semester.
+    Additionally, an intensive German course (level A1) is offered during the Orientation Week which is 1-2 weeks before the start of studies.
+    Language certificates are not required."
 
 session_config:
   session_expiration_time: 60
