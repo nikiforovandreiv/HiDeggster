@@ -6,15 +6,14 @@ intents:
   - help
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - persona_question
-  - german_courses
+  - choose_main_info
   - application_choice
-  - application_info
-  - application_period
-  - how_to_apply
-  - language_requirements
+  - campus_choice
+  - deggendorf_orientation_choice
+  - cham_orientation_choice
+  - deggendorf_exchange_course
+  - deggendorf_exchange_specific
 
 responses:
   utter_greet:
@@ -28,47 +27,104 @@ responses:
 
   utter_farewell:
     - text: "Great! When you will have more questions I will be happy to answer them!"
-  utter_german_courses:
-    - text: "Attending a German language course is obligatory for all exchange students.
-
-You can expect an extensive range of courses on the levels A1 to C1, which will enable you to improve
-and extend your German language skills and at the same time get to know Germany and the German culture better.
-
-You can obtain official certificates for German as a foreign language directly here at the DIT (TestDAF, telc)."
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
   utter_help:
   - text: "You can ask me about german courses, application, orientation week, exchange semester course choices
-  and student reviews!"
-
-  utter_application_choice:
-    - text: " Do you want to know about language skills, application period or how to apply?"
+     and student reviews!"
 
   utter_persona_info:
     - text: "My name is Deggster and I am happy to be your International exchange companion !!!"
 
-  utter_application_period:
-    - text: "The online application portal is only activated during the following application periods:
-      - 1 April - 1 June for October entries
-      - 1 October - 1 December for March entries"
+  utter_ask_application_choice:
+    - text: "Would you like to know how to apply, language requirements or application period ?"
 
-  utter_how_to_apply:
-    - text: "View the application procedure checklist to guide you step-by-step through preparation for your exchange semester at DIT.
+  utter_ask_campus_choice:
+    - text: "On which campus the orientation week, that you are interested in, will be held ?
+       Deggendorf, European Rottal-Inn (Pfarrkirchen) campus, or campus Cham?"
 
-      Exchange students apply via Mobility Online.
-      The link to access the online application form will be provided after you have offcially been nominated by your home university (free mover applicants: application link will be provided upon request).
+  utter_ask_deggendorf_orientation_choice:
+    - text: "Would you like to know the date, activities, location or who can
+         paticipate ?"
+  utter_start_exchange_loop:
+    - text: "Exchange loop started"
+  utter_ask_cham_orientation_choice:
+    - text: "Would you like to know the dates or programme of the orientation ?"
+  utter_ask_deggendorf_exchange_specific:
+    - text: "Do you want to know target, prerequisites, contact or fees?"
 
-      After completing the online application form, you will receive an email containing a link and login details.
-      You then must follow the link and enter a password, before entering further details and uploading your documents (such as CV, photo, passport/national ID card, grade sheet, certificate of enrolment).
 
-      Application as an exchange student at DIT is ONLY via Mobility Online. All required documents can be uploaded and nothing should be sent through traditional post or e-mail"
 
-  utter_language_requirements:
-    - text: "All exchange students must participate in a German course during the semester.
-    Additionally, an intensive German course (level A1) is offered during the Orientation Week which is 1-2 weeks before the start of studies.
-    Language certificates are not required."
+actions:
+  - action_utter_main_info
+  - action_application_info
+  - action_orientation_week_info
+  - validate_orientation_week_form
+  - action_orientation_week_additional
+  - action_exchange_courses_options
+  - validate_exchange_courses_form
+  - action_submit_exchange_courses
+
+entities:
+  - main_choice
+  - application_choice_ent
+  - campus
+  - deggendorf_orientation
+  - cham_orientation
+  - exchange_course_ent
+  - deggendorf_exchange_specific_ent
+
+slots:
+  main_info_choice:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: main_choice
+  application_choice:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: application_choice_ent
+  campus_choice:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: campus
+  deggendorf_orientation_choice:
+    type: text
+    mappings:
+        - type: from_entity
+          entity: deggendorf_orientation
+  cham_orientation_choice:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: cham_orientation
+  exchange_course:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: exchange_course_ent
+  deggendorf_exchange_specific:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: deggendorf_exchange_specific_ent
+
+
+forms:
+  application_form:
+    required_slots:
+      - application_choice
+  orientation_week_form:
+    required_slots:
+      - campus_choice
+  exchange_courses_form:
+    required_slots:
+      - campus_choice
+      - exchange_course
 
 session_config:
   session_expiration_time: 60

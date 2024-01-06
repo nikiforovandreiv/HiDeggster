@@ -3,7 +3,7 @@ version: "3.1"
 rules:
 - rule: Provide help anytime users says help
   steps:
-  - intent: ask_help
+  - intent: help
   - action: utter_help
 
 - rule: When bot asks user if they want to know anything else and user denies tell them that bot waits until next time
@@ -28,3 +28,59 @@ rules:
   - intent: persona_question
   - action: utter_persona_info
 
+- rule: german course info
+  condition:
+    - slot_was_set:
+        - main_info_choice: "german courses"
+  steps:
+    - action: utter_anything_else
+
+- rule: application form
+  condition:
+    - slot_was_set:
+        - main_info_choice: "application"
+  steps:
+    - active_loop: application_form
+
+- rule: submit application form
+  condition:
+    - active_loop: application_form
+  steps:
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_application_info
+
+- rule: orientation week form
+  condition:
+    - slot_was_set:
+        - main_info_choice: "orientation week"
+  steps:
+    - active_loop: orientation_week_form
+
+- rule: submit orientation week form
+  condition:
+    - active_loop: orientation_week_form
+  steps:
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_orientation_week_additional
+
+- rule: exchange courses form
+  condition:
+    - slot_was_set:
+        - main_info_choice: "exchange courses"
+  steps:
+    - active_loop: exchange_courses_form
+    - action: utter_ask_deggendorf_exchange_specific
+
+
+- rule: submit exchange courses form
+  condition:
+    - active_loop: exchange_courses_form
+  steps:
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_submit_exchange_courses

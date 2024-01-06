@@ -29,6 +29,8 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - Thank you goodbye
+    - That's all i needed to know
 
 - intent: affirm
   examples: |
@@ -38,6 +40,7 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - i want to know more
 
 - intent: deny
   examples: |
@@ -77,44 +80,129 @@ nlu:
     - Any guidance?
     - Please explain
 
-- intent: german_courses
+- intent: choose_main_info
   examples: |
-    - Tell me more about german courses
-    - german courses please
-    - courses
-    - german
+    -Tell me more about [application] choice(main_choice)
+    -[german courses] please(main_choice)
+    -[courses]{"entity": "main_choice", "value": "german courses"}
+    -[application]{"entity": "main_choice", "value": "application"}
+    -[Orientation week](main_choice)
+    -I want to know about [orientation week](main_choice)
+    -[Exchange semester choices]{"entity": "main_choice", "value": "exchange"}
+    -[Exchange semester]{"entity": "main_choice", "value": "exchange"}
+    -[Exchange course choices]{"entity": "main_choice", "value": "exchange"}
+    -[Exchange courses]{"entity": "main_choice", "value": "exchange"}
+    -Can you give me information on [exchange] semester choices(main_choice)
+    -[Student testimonials]{"entity": "main_choice", "value": "student reviews"}
 
-- intent: application_info
+- intent: application_choice
   examples: |
-    - Tell me more about application
-    - application please
+    - [How to apply]?(application_choice_ent)
+    - Tell me about [language requirements](application_choice_ent)
+    - [language skills]{"entity": "application_choice_ent", "value": "language requirements"}
+    - Can you give me information about[application period]?(application_choice_ent)
+
+- intent: campus_choice
+  examples: |
+    - campus [Cham](campus)
+    - [Deggendorf] campus(campus)
+    - I am interested in [Rottal-Inn] campus(campus)
+
+- intent: deggendorf_orientation_choice
+  examples: |
+    - I want to know about [activities](deggendorf_orientation)
+    - [Who can paticipate]?{"entity": "deggendorf_orientation", "value": "participants"}
+    - What is the [date]?(deggendorf_orientation)
+    - Tell me about the [location](deggendorf_orientation)
+    - [Where it will be] held?{"entity": "deggendorf_orientation", "value": "location"}
+
+- intent: cham_orientation_choice
+  examples: |
+    - I want to know about the [programme](cham_orientation)
+    - [programme](cham_orientation)
+    - [programme] please(cham orientation)
+    - [date]s(cham_orientation)
+    - What is the [date]?(cham_orientation)
+    - [When it will be] held?{"entity": "cham_orientation", "value": "date"}
+
+- intent: deggendorf_exchange_course
+  examples: |
+    - I want to know about the general [business] study semester(exchange_course_ent)
+    - General [business] exchange semester(exchange_course_ent)
+    - General [engineering] exchange semester(exchange_course_ent)
+    - International [computer science] exchange semester please(exchange_course_ent)
+    - Master of strategic and international [management](exchange_course_ent)
+
+- intent: deggendorf_exchange_specific
+  examples: |
+    - I want to know the [prerequisites](deggendorf_exchange_specific_ent)
+    - [prerequisites](deggendorf_exchange_specific_ent)
+    - What is the [target group](deggendorf_exchange_specific_ent)
+    - [course content](deggendorf_exchange_specific_ent)
+    - I'd like to know the course [content](deggendorf_exchange_specific_ent)
+    - [content] of the course(deggendorf_exchange_specific_ent)
+    - course [overview](deggendorf_exchange_specific_ent)
+    - [overview] of the course(deggendorf_exchange_specific_ent)
+    - [starting date](deggendorf_exchange_specific_ent)
+    - [starting date]s(deggendorf_exchange_specific_ent)
+    - What are the [fees](deggendorf_exchange_specific_ent)
+    - [fees](deggendorf_exchange_specific_ent)
+    - [contact](deggendorf_exchange_specific_ent)
+
+- lookup: main_choice
+  examples: |
+    - german courses
     - application
+    - orientation week
+    - exchange
+    - student reviews
 
-- intent: application_period
+- lookup: application_choice_ent
   examples: |
-    - Application period please
-    - Application period
-    - When is the application period for October entries?
-    - What are the application dates for March entries?
-    - Could you tell me about the application timeline?
-    - From when to when can I apply for the October intake?
-    - What are the deadlines for application submissions?
+    - how to apply
+    - language requirements
+    - application period
 
-- intent: how_to_apply
+- lookup: campus
   examples: |
-    - How to apply
-    - How do I apply to your university?
-    - What is the application process?
-    - Can you guide me through the application procedure?
-    - I need information on how to submit my application.
-    - Where can I find the application form?
+    - deggendorf
+    - pfarkirchen
+    - cham
 
-- intent: language_requirements
+- lookup: deggendorf_orientation
   examples: |
-    - Language requirements
-    - Language requirements please
-    - Are there any language requirements for admission?
-    - Do I need language certificates to apply?
-    - What language skills are necessary for admission?
-    - Could you tell me about the language proficiency needed?
-    - Are language tests mandatory for the application?
+    - activities
+    - participants
+    - date
+    - location
+
+- lookup: cham_orientation
+  examples: |
+    - programme
+    - date
+- lookup: exchange_course_ent
+  examples: |
+    - business
+    - engineering
+    - computer science
+    - management
+    - energy systems
+    - health informatics
+
+- lookup: deggendorf_exchange_specific_ent
+  examples: |
+    - prerequisites
+    - target group
+    - content
+    - overview
+    - starting date
+    - fees
+    - contact
+
+- synonym: management
+  examples: |
+    - development
+- synonym: pfarrkirchen
+  examples: |
+    - european campus
+    - Rottal-Inn

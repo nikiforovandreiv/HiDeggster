@@ -6,40 +6,100 @@ stories:
   steps:
       - intent: greet
       - action: utter_greet
-      - intent: german_courses
-      - action: utter_german_courses
-      - action: utter_anything_else
-      - intent: deny
-      - action: utter_farewell
-      - intent: goodbye
-      - action: utter_goodbye
-
-- story: Ask about application
-  steps:
-      - intent: greet
-      - action: utter_greet
       - action: utter_help
-      - intent: application_info
-      - action: utter_application_choice
-      - intent: language_requirements
-      - action: utter_language_requirements
-      - action: utter_anything_else
-      - intent: deny
-      - action: utter_farewell
-      - intent: goodbye
-      - action: utter_goodbye
+      - intent: choose_main_info
+      - action: action_utter_main_info
 
-- story: User wants information about application period
+- story: fill application form
   steps:
-      - intent: application_period
-      - action: utter_application_period
+      - action: action_utter_main_info
+      - slot_was_set: # user provides main info
+            - main_info_choice: "application"
+      - active_loop: application_form
+      - action: utter_ask_application_choice
+      - intent: application_choice
+        entities:
+            - application_choice_ent: "how to apply"
+      - slot_was_set: # user provides application choice
+            - application_choice: "how to apply"
+      - active_loop: null
+      - action: action_application_info
 
-- story: User wants information on how to apply
+- story: fill orientation week form deggendorf
   steps:
-      - intent: how_to_apply
-      - action: utter_how_to_apply
+      - intent: choose_main_info
+        entities:
+          - main_info_choice: "orientation week"
+      - slot_was_set: # user provides main info
+          - main_info_choice: "orientation week"
+      - action: action_utter_main_info
+      - active_loop: orientation_week_form
+      - action: utter_ask_campus_choice
+      - intent: campus_choice
+        entities:
+            - campus: "deggendorf"
+      - action: validate_orientation_week_form
+      - slot_was_set: # user provides campus choice
+            - campus_choice: "deggendorf"
+      - action: action_orientation_week_info
+      - action: utter_ask_deggendorf_orientation_choice
+      - intent: deggendorf_orientation_choice
+        entities:
+            - deggendorf_orientation: "date"
+      - slot_was_set: # user provides campus choice
+                    - deggendorf_orientation_choice: "date"
+      - active_loop: null
+      - action: action_orientation_week_additional
 
-- story: User wants information about language requirements
+- story: fill orientation week form cham
   steps:
-      - intent: language_requirements
-      - action: utter_language_requirements
+      - intent: choose_main_info
+        entities:
+            - main_choice: "orientation week"
+      - slot_was_set: # user provides main info
+            - main_info_choice: "orientation week"
+      - action: action_utter_main_info
+      - active_loop: orientation_week_form
+      - action: utter_ask_campus_choice
+      - intent: campus_choice
+        entities:
+            - campus: "cham"
+      - action: validate_orientation_week_form
+      - slot_was_set: # user provides campus choice
+            - campus_choice: "cham"
+      - action: action_orientation_week_info
+      - action: utter_ask_cham_orientation_choice
+      - intent: cham_orientation_choice
+        entities:
+            - cham_orientation: "programme"
+      - slot_was_set: # user provides campus choice
+                    - cham_orientation_choice: "programme"
+      - active_loop: null
+      - action: action_orientation_week_additional
+
+- story: fill exchange courses form deggendorf
+  steps:
+      - intent: choose_main_info
+        entities:
+            - main_choice: "exchange"
+      - slot_was_set: # user provides main info
+            - main_info_choice: "exchange"
+      - action: action_utter_main_info
+      - action: utter_start_exchange_loop
+      - intent: deggendorf_exchange_course
+        entities:
+            - exchange_course_ent: "engineering"
+      - slot_was_set: # user provides exchange course
+            - exchange_course: "engineering"
+      - active_loop: exchange_courses_form
+      - action: utter_ask_deggendorf_exchange_specific
+      - intent: deggendorf_exchange_specific
+        entities:
+             - deggendorf_exchange_specific_ent: "prerequisites"
+      - slot_was_set: # user provides exchange course
+                    - deggendorf_exchange_specific: "prerequisites"
+      - action: validate_exchange_courses_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_submit_exchange_courses
