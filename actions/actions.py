@@ -25,8 +25,8 @@ skills, application period or how to apply?",
 be held ? Deggendorf, European Rottal-Inn (Pfarrkirchen) campus, or campus Cham?",
                    "exchange": "Which course are you interested in ? Business, engineering, computer science\
                    management",
-                   "student reviews": "Sure! I can share opinions of students from all around the globe with you!\
-There are student testimonials from Brazil, Slovakia, Indonesia, Jordan, Mexico, Ecuador and Poland! Tell me the\
+                   "reviews": "Sure! I can share opinions of students from all around the globe with you!\
+There are student testimonials from Brazil, Slovakia, Indonesia, Jordan, Mexico, Ecuador and Poland! Tell me the \
 country you want to know opinions from"}
         if choice in answers:
             dispatcher.utter_message(text=answers[choice])
@@ -228,4 +228,69 @@ class ActionSubmitExchangeCourses(Action):
         else:
             specific = tracker.get_slot("deggendorf_exchange_specific")
             dispatcher.utter_message(text=answers[exchange_choice][specific])
+        return []
+
+
+class ValidateReviewsForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_reviews_form"
+
+    @staticmethod
+    def country_db() -> List[Text]:
+        """Database of supported campuses"""
+
+        return ["poland", "ecuador", "mexico", "jordan", "indonesia", "slovakia", "brazil"]
+
+    def validate_reviews_country_choice(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        if slot_value in self.country_db():
+            # validation succeeded
+            return {"reviews_country_choice": slot_value}
+        else:
+            # validation failed, set this slot to None so that the
+            # user will be asked for the slot again
+            return {"reviews_country_choice": None}
+
+
+class ActionAskStudent(Action):
+
+    def name(self) -> Text:
+        return "action_ask_student"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        answers = {"brazil": "re", "slovakia": "ro",
+                                "indonesia": "Ind", "jordan": "Jor",
+                                "mexico": "Mex", "ecuador": "Ecu",
+                                "poland": "Pol"
+                              }
+        country = tracker.get_slot("reviews_country_choice").lower()
+        dispatcher.utter_message(text=answers[country])
+        return []
+
+
+class ActionSubmitReviewsForm(Action):
+
+    def name(self) -> Text:
+        return "action_submit_reviews_form"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        answers = {"rebeka": "re", "romana": "ro",
+                                "tri": "tr", "yangyang": "ya",
+                                "antonia": "an", "vinicius": "vi",
+                                "mayara": "ma", "qais": "qa",
+                                "alejandro": "al", "denisse": "de",
+                                "kornelia": "ko", "barbara": "ba"
+                              }
+        student = tracker.get_slot("student_choice").lower()
+        dispatcher.utter_message(text=answers[student])
         return []

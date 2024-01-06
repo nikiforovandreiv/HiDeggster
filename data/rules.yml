@@ -70,7 +70,7 @@ rules:
 - rule: exchange courses form
   condition:
     - slot_was_set:
-        - main_info_choice: "exchange courses"
+        - main_info_choice: "exchange"
   steps:
     - active_loop: exchange_courses_form
     - action: utter_ask_deggendorf_exchange_specific
@@ -84,3 +84,21 @@ rules:
     - slot_was_set:
         - requested_slot: null
     - action: action_submit_exchange_courses
+
+- rule: reviews form
+  condition:
+    - slot_was_set:
+        - main_info_choice: "reviews"
+  steps:
+    - active_loop: reviews_form
+    - action: action_utter_main_info
+
+
+- rule: submit reviews form
+  condition:
+    - active_loop: exchange_courses_form
+  steps:
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_submit_reviews_form

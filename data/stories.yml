@@ -85,7 +85,6 @@ stories:
       - slot_was_set: # user provides main info
             - main_info_choice: "exchange"
       - action: action_utter_main_info
-      - action: utter_start_exchange_loop
       - intent: deggendorf_exchange_course
         entities:
             - exchange_course_ent: "engineering"
@@ -103,3 +102,29 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - action: action_submit_exchange_courses
+
+- story: fill reviews form deggendorf
+  steps:
+      - intent: choose_main_info
+        entities:
+            - main_choice: "reviews"
+      - slot_was_set: # user provides main info
+            - main_info_choice: "reviews"
+      - active_loop: reviews_form
+      - action: action_utter_main_info
+      - intent: reviews_country_choice
+        entities:
+            - reviews_country: "Brazil"
+      - slot_was_set: # user provides exchange course
+            - reviews_country_choice: "Brazil"
+      - action: action_ask_student
+      - intent: reviews_student_choice
+        entities:
+             - student: "Barbara"
+      - slot_was_set: # user provides exchange course
+                    - student_choice: "Barbara"
+      - action: validate_reviews_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_submit_reviews_form

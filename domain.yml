@@ -14,6 +14,8 @@ intents:
   - cham_orientation_choice
   - deggendorf_exchange_course
   - deggendorf_exchange_specific
+  - reviews_country_choice
+  - reviews_student_choice
 
 responses:
   utter_greet:
@@ -48,10 +50,10 @@ responses:
   utter_ask_deggendorf_orientation_choice:
     - text: "Would you like to know the date, activities, location or who can
          paticipate ?"
-  utter_start_exchange_loop:
-    - text: "Exchange loop started"
+
   utter_ask_cham_orientation_choice:
     - text: "Would you like to know the dates or programme of the orientation ?"
+
   utter_ask_deggendorf_exchange_specific:
     - text: "Do you want to know target, prerequisites, contact or fees?"
 
@@ -66,6 +68,9 @@ actions:
   - action_exchange_courses_options
   - validate_exchange_courses_form
   - action_submit_exchange_courses
+  - action_ask_student
+  - action_submit_reviews_form
+  - validate_reviews_form
 
 entities:
   - main_choice
@@ -75,6 +80,8 @@ entities:
   - cham_orientation
   - exchange_course_ent
   - deggendorf_exchange_specific_ent
+  - reviews_country
+  - student
 
 slots:
   main_info_choice:
@@ -112,6 +119,16 @@ slots:
     mappings:
       - type: from_entity
         entity: deggendorf_exchange_specific_ent
+  reviews_country_choice:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: reviews_country
+  student_choice:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: student
 
 
 forms:
@@ -125,6 +142,10 @@ forms:
     required_slots:
       - campus_choice
       - exchange_course
+  reviews_form:
+    required_slots:
+      - reviews_country_choice
+      - student_choice
 
 session_config:
   session_expiration_time: 60

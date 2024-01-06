@@ -93,7 +93,10 @@ nlu:
     -[Exchange course choices]{"entity": "main_choice", "value": "exchange"}
     -[Exchange courses]{"entity": "main_choice", "value": "exchange"}
     -Can you give me information on [exchange] semester choices(main_choice)
-    -[Student testimonials]{"entity": "main_choice", "value": "student reviews"}
+    -[Student testimonials]{"entity": "main_choice", "value": "reviews"}
+    - student [reviews](main_choice)
+    - [reviews](main_choice)
+
 
 - intent: application_choice
   examples: |
@@ -149,13 +152,50 @@ nlu:
     - [fees](deggendorf_exchange_specific_ent)
     - [contact](deggendorf_exchange_specific_ent)
 
+- intent: reviews_country_choice
+  examples: |
+    - [Brazil](reviews_country)
+    - [Brazil] reviews(reviews_country)
+    - [Slovakia](reviews_country)
+    - [Slovakia] please(reviews_country)
+    - [Indonesia](reviews_country)
+    - Tell me about [Indonesia]n reviews(reviews_country)
+    - reviews from [Indonesia](reviews_country)
+    - [Jordan](reviews_country)
+    - reviews from [Poland](reviews_country)
+    - reviews from [Jordan](reviews_country)
+    - [Mexico](reviews_country)
+    - reviews from [Mexico] please(reviews_country)
+    - [Ecuador](reviews_country)
+    - [Ecuador] students(reviews_country)
+    - [Poland](reviews_country)
+    - [Poland] student reviews(reviews_country)
+
+- intent: reviews_student_choice
+  examples: |
+    - [rebeka](student)
+    - [rebeka]s review(student)
+    - [romana](student)
+    - [romana]s review(student)
+    - [tri](student)
+    - [tri]s review(student)
+    - [yangyang](student)
+    - [antonia](student)
+    - [vinicius](student)
+    - [mayara](student)
+    - [qais](student)
+    - [alejandro](student)
+    - [denisse](student)
+    - [kornelia](student)
+    - [barbara](student)
+
 - lookup: main_choice
   examples: |
     - german courses
     - application
     - orientation week
     - exchange
-    - student reviews
+    - reviews
 
 - lookup: application_choice_ent
   examples: |
@@ -198,6 +238,32 @@ nlu:
     - starting date
     - fees
     - contact
+
+- lookup: reviews_country
+  examples: |
+    - slovakia
+    - brazil
+    - indonesia
+    - jordan
+    - mexico
+    - ecuador
+    - poland
+- lookup: student
+  examples: |
+    - rebeka
+    - romana
+    - tri
+    - yangyang
+    - antonia
+    - vinicius
+    - mayara
+    - qais
+    - alejandro
+    - denisse
+    - kornelia
+    - barbara
+
+
 
 - synonym: management
   examples: |
