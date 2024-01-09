@@ -50,6 +50,7 @@ rules:
     - slot_was_set:
         - requested_slot: null
     - action: action_application_info
+    - action: utter_anything_else
 
 - rule: orientation week form
   condition:
@@ -66,6 +67,7 @@ rules:
     - slot_was_set:
         - requested_slot: null
     - action: action_orientation_week_additional
+    - action: utter_anything_else
 
 - rule: exchange courses form
   condition:
@@ -84,6 +86,7 @@ rules:
     - slot_was_set:
         - requested_slot: null
     - action: action_submit_exchange_courses
+    - action: utter_anything_else
 
 - rule: reviews form
   condition:
@@ -102,3 +105,4 @@ rules:
     - slot_was_set:
         - requested_slot: null
     - action: action_submit_reviews_form
+    - action: utter_anything_else

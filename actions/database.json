@@ -1,18 +1,79 @@
 {
-  "application_info": [
-    {
-      "id": "how to apply",
-      "content": "Exchange students apply via Mobility Online. The link to access the online application form will be provided after you have offcially been nominated by your home university (free mover applicants: application link will be provided upon request).After completing the online application form, you will receive an email containing a link and login details. You then must followthe link and enter a password, before entering further details and uploading your documents (such as CV,photo, passport/national ID card, grade sheet, certificate of enrolment).Application as an exchange student at DIT is ONLY via Mobility Online. All required documents can be uploaded and nothing should \n be sent through traditional post or e-mail"
+  "main_info": {"german courses": "Attending a German language course is obligatory for all exchange students. You can expect an extensive range of courses on the levels A1 to C1, which will enable you to improve and extend your German language skills and at the same time get to know Germany and the German culture better. You can obtain official certificates for German as a foreign language directly here at the DIT (TestDAF, telc).",
+                   "application": "Sure! What exactly do would you like to know? Do you want to know about language skills, application period or how to apply?",
+                   "orientation week": "Sure! On which campus the orientation week, that you are interested in, will be held ? Deggendorf, European Rottal-Inn (Pfarrkirchen) campus, or campus Cham?",
+                   "exchange": "Which course are you interested in ? Business, engineering, computer science management",
+                   "reviews": "Sure! I can share opinions of students from all around the globe with you! There are student testimonials from Brazil, Slovakia, Indonesia, Jordan, Mexico, Ecuador and Poland! Tell me the country you want to know opinions from"
+  },
+  "exchange_courses_info": {
+    "business": {
+      "target group": "Business students at Bachelor level",
+      "prerequisites": "You can qualify for this course if you have: Completed at least two semesters at your home university, Have good to excellent knowledge of the English language (level B1-C1). Prior knowledge of the German language is not required (but recommended).",
+      "content": "The General Business program, tailored for business and tourism students, offers exchange semesters with 20-30 ECTS per semester. Taught in English, students select subjects aligning with their home universities' programs. Minimum 20 credits required. Courses cover Applied Economics, Business Administration, International Management, Tourism Management, and Organisational and Economic Psychology. German language classes and intercultural training are available.",
+      "overview": "100% in English, Campus: Deggendorf",
+      "starting date": "The starting date for the winter semester is 1 October. The starting date for the summer semester is 15 March.",
+      "fees": "The programme is free of charge to all Bachelor students.",
+      "contact": "Johanna Maurer, Coordinator for the General Business Programme"
     },
-    {
-      "id": "application period",
-      "content": "Bla"
+    "engineering": {
+      "target group": "This engineering exchange semester is open to international English-speaking Bachelor's students who can complete one of their college semesters and earn up to 30 credits whilst learning German as a foreign language.",
+      "prerequisites": "You can qualify for this course if you have: Completed at least two semesters at your home university, Have good to excellent knowledge of the English language (level B1-C1). Prior knowledge of the German language is not required (but recommended).",
+      "content": "Students will attend German lessons and can also join in a tandem language programme, which is offered as a further linguistic support tool. After completing an introductory orientation week with intercultural training, students choose various engineering subjects for a minimum of 20 credits (see subject details below) to complement their degree course at their home universities.",
+      "overview": "100% in English, Campus: Deggendorf",
+      "starting date": "The starting date for the winter semester is 1 October. The starting date for the summer semester is 15 March.",
+      "fees": "The programme is free of charge to all Bachelor students.",
+      "contact": "Nadine Kappl - Coordinator for the General Engineering Programme"
+    },
+    "computer science": {
+      "target group": "This exchange semester in the field of Computer Science is open to international English-speaking Bachelor's students who can complete one of their college semesters and earn up to 30 credits whilst learning German as a foreign language.",
+      "prerequisites": "You can qualify for this course if you have: Completed at least two semesters at your home university, Have good to excellent knowledge of the English language (level B1-C1). Prior knowledge of the German language is not required (but recommended).",
+      "content": "After completing an introductory orientation week with intercultural training, students choose from a variety of English-taught subjects offered by the DIT Faculty of Computer Science (see subject details below) to complement their degree course at their home universities.Additionally, students will attend German lessons and can join in a tandem language programme, which is offered as a further linguistic support tool.",
+      "overview": "100% in English, Campus: Deggendorf",
+      "starting date": "The starting date for the winter semester is 1 October. The starting date for the summer semester is 15 March.",
+      "fees": "The programme is free of charge to all Bachelor students.",
+      "contact": "Nadine Kappl - Coordinator for the General Engineering Programme"
+    },
+    "management": "restricted admissions for exchange students (applications are only possible upon request), summer semester: 100 % in English, module handbook"
+  },
+  "application_info": {
+    "language requirements": "All exchange students must participate in a German course during the semester. Additionally, an intensive German course (level A1) is offered during the Orientation Week which is 1-2 weeks before the start of studies. Language certificates are not required.",
+    "application period": "The online application portal is only activated during the following application periods: 1 April - 1 June for October entries and 1 October - 1 December for March entries",
+    "how to apply": "View the application procedure checklist to guide you step-by-step through preparation for your exchange semester at DIT.\n\nExchange students apply via Mobility Online. The link to access the online application form will be provided after you have offcially been nominated by your home university (free mover applicants: application link will be provided upon request).\n\nAfter completing the online application form, you will receive an email containing a link and login details. You then must follow the link and enter a password, before entering further details and uploading your documents (such as CV, photo, passport/national ID card, grade sheet, certificate of enrolment).\n\nApplication as an exchange student at DIT is ONLY via Mobility Online. All required documents can be uploaded and nothing should be sent through traditional post or e-mail."
+  },
+  "orientation_week_info": {
+    "deggendorf": {
+      "participants": "For exchange students, participation is compulsory. Degree-seeking international students are advised to join",
+      "date": "One to two weeks before the start of every semester, annually in March and September.",
+      "activities": "The Orientation Week with intensive German prep course is an essential event for international students. During the Orientation Week, we will help you make friends, settle in and guide you into a smooth start. The following activities are included in the programme: Guided tour of the campus and the town, IT introduction, Library introduction, Registering in the residents' registration office, Getting a residence permit .Besides, the Orientation Week offers much more events such as an Intercultural Training, a Bavarian Evening and different day trips.",
+      "location": "The orientation week is held mainly around DIT's Deggendorf campus and in town."
+    },
+    "pfarrkirchen": "On your arrival at the European Campus Rottal-Inn you will take part in a so-called Orientation Day. In addition to many social events you will receive detailed course information and practical support with all necessary formalities, such as registration at the town hall, health insurance, opening a bank account, German courses and application for a students card. The International Office informs students about events in the coming semester and international students will have the opportunity to ask all questions about studying and living in Pfarrkirchen. ",
+    "cham": {
+      "date":"The Orientation Days in Cham for all international students take place shortly before the start of the semester (End of September / Beginning of October).",
+      "programme": "The programme includes: Getting to know Campus Cham and important facilities of the university, IT introduction and information about the labs / safety briefing, Information about studying in Germany and living in Cham, Lunch and Get-together."
     }
-  ],
-  "orientation_week_info": [
-    {
-      "id": 1,
-      "content": "This is the first post by Alice."
-    }
-  ]
+  },
+  "student_testimonials": {
+          "rebeka": "Choosing Germany's European Campus for a semester abroad fulfilled my goal of studying in English in a German-speaking country. The International Office's support, from application to arrival, was outstanding. Exciting events like Culture Cafe and Taste the World enhanced my experience. The vibrant campus, with diverse initiatives and R.E.S.P organization, created a welcoming international environment, fostering friendships and inspiring stories.",
+          "romana": "Studying in Deggendorf for two enriching years, the positive impressions of the town and university are profound. The relaxed atmosphere aids interactions with the International Office. Enjoying traditional events like Frühlingsfest, the English International Management program offers engaging courses with practical examples, including a visit to the BMW plant. Learning German was a primary motivation, and despite the challenge of Bavarian dialect, significant language improvement occurred. The high-quality dormitories, university services, and the amicable community make Deggendorf a second home, an irreplaceable decision.",
+          "tri": "DIT boasts strong academic rankings and well-structured, professional learning environments. Professors treat students with respect and foster an open atmosphere for questions and opinions. Studying at Deggendorf University has been a valuable and challenging experience in an international setting. For those curious, the message is clear: Heeeeey.... if you want to know more, you should be here!!!",
+          "yangyang": "Chose Deggendorf University for its unique city name, found it to be a friendly and peaceful learning environment. AKI orientation week introduced diverse friends from around the world. Impressed by the active International Office, the campus design fosters both learning and socialization. Germany's beauty and advanced technology contribute to the greatness of this university.",
+          "antonia": "Technische Innovationen verbessern das Leben, daher entschied ich mich sofort für ein Austauschjahr in Deutschland. An der Technischen Hochschule Deggendorf und im Formula Student Team, Fast Forest, erlebte ich die Einheit von Theorie und Praxis. Durch ein Praktikum in einem deutschen Engineering-Unternehmen erhielt ich wertvolle Einblicke. Freundliche Menschen und hilfsbereite Lehrer ermöglichten nicht nur akademischen Erfolg, sondern auch Deutschkenntnisse und Freundschaften.",
+          "vinicius": "Deggendorf encanta pela infraestrutura ideal para estudantes, com ciclovias conectando a cidade às margens do Danúbio. Custos de vida acessíveis a tornam atrativa. Na THD, salas equipadas, excelentes professores e vínculos academia-profissão geram inúmeras oportunidades. Alemanha impressiona pela eficiência e a hospitalidade dos alemães. Como estudante, a praticidade diária, excelência na engenharia e universidades destacam a Alemanha como uma escolha convincente.",
+          "mayara": "Deggendorf's small size offers excellent infrastructure, ideal for student life with proximity and cycle routes along the Danube. Affordable living costs make it attractive. On campus, well-equipped classrooms, supportive teachers, and extensive academic-professional connections create numerous project opportunities. Germany impresses with efficient infrastructure and polite, helpful people. As a student, practicality in daily life, engineering excellence, and top-notch universities make Germany a compelling choice.",
+          "qais": "Qais Sunna', 22, from Jordan, joined Technische Hochschule Deggendorf as a mechatronics exchange student in Feb. 2017. Now in the 8th semester, his experience at DIT is close to perfection. The university's welcoming pickup service, medium size, central location, and friendly staff make it highly recommended for any student considering studying abroad in Germany.",
+          "alejandro": "Securing a Germany internship, especially with Siemens Healthcare in Kemnath, proved highly rewarding. Engaged in an impactful automation project, I gained significant responsibilities, enhancing my skills. The flexible schedule allowed for enjoyable trips. The THD Career Service provided invaluable support, refining my resume and interview preparation. Even if not your top choice, numerous excellent companies offer skill development and enjoyment.",
+          "denisse": "DIT exceeded expectations, offering an enriching cultural experience and fostering friendships among diverse nationalities. Initial uncertainties about lectures and professors dissolved in the welcoming atmosphere. Gratitude to DIT for dedicated support, making the short time in Deggendorf unforgettable. A truly rewarding and welcoming international experience.",
+          "kornelia": "I came to Deggendorf because I knew that I would fit in and that I could actively contribute to the community. The University and the town are not that big so it’s very easy to get to know other students. There is something about this small Bavarian town which makes you feel comfortable, safe and relaxed.",
+          "barbara": "Deggendorf University of Applied Sciences and the city left a positive first impression. The Host Family and Tandem programs aid language practice and cultural integration. AKI Club provides support, organizes events, and ensures a comfortable experience. English courses, approachable professors, and encouragement for international experiences make adaptation easy. The small, cozy city feels safe, with diverse student housing options. Highly recommended for its student-friendly atmosphere and readiness to embrace diverse students."
+  },
+  "ask_student": {
+    "brazil": "Great! Would you like to hear Antonia's, Mayara's, Vinicius' or Barbara's opinion ?" ,
+    "slovakia": "Great! Would you like to hear Rebeka's or Romana's opinion ?",
+    "indonesia": "Great! Would you like to hear YangYang's or Tri's opinion ?",
+    "jordan": "Great! Would you like to hear Quais' opinion? Write his name to proceed!",
+    "mexico": "Great! Would you like to hear Alejandro's opinion ? Write his name to proceed!",
+    "ecuador": "Great! Would you like to hear Dennisse's opinion ? Write his name to proceed!",
+    "poland": "Great! Would you like to hear Kornelia's opinion ? Write her name to proceed!"
+  }
 }

@@ -101,15 +101,22 @@ nlu:
 - intent: application_choice
   examples: |
     - [How to apply]?(application_choice_ent)
+    - I want to know [how to apply](application_choice_ent)
+    - [How do i apply?]{"entity": "application_choice_ent", "value": "how to apply"}
     - Tell me about [language requirements](application_choice_ent)
     - [language skills]{"entity": "application_choice_ent", "value": "language requirements"}
+    - [language level]{"entity": "application_choice_ent", "value": "language requirements"}
     - Can you give me information about[application period]?(application_choice_ent)
 
 - intent: campus_choice
   examples: |
     - campus [Cham](campus)
     - [Deggendorf] campus(campus)
+    - [deggendorf](campus)
     - I am interested in [Rottal-Inn] campus(campus)
+    - [pfarrkirchen] campus(campus)
+    - [European campus]{"entity": "campus", "value": "pfarrkirchen"}
+    - [European campus]
 
 - intent: deggendorf_orientation_choice
   examples: |

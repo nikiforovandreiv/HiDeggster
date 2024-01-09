@@ -24,6 +24,9 @@ stories:
             - application_choice: "how to apply"
       - active_loop: null
       - action: action_application_info
+      - action: utter_anything_else
+      - intent: deny
+      - action: utter_farewell
 
 - story: fill orientation week form deggendorf
   steps:
@@ -50,6 +53,9 @@ stories:
                     - deggendorf_orientation_choice: "date"
       - active_loop: null
       - action: action_orientation_week_additional
+      - action: utter_anything_else
+      - intent: deny
+      - action: utter_farewell
 
 - story: fill orientation week form cham
   steps:
@@ -76,6 +82,9 @@ stories:
                     - cham_orientation_choice: "programme"
       - active_loop: null
       - action: action_orientation_week_additional
+      - action: utter_anything_else
+      - intent: deny
+      - action: utter_farewell
 
 - story: fill exchange courses form deggendorf
   steps:
@@ -102,6 +111,9 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - action: action_submit_exchange_courses
+      - action: utter_anything_else
+      - intent: deny
+      - action: utter_farewell
 
 - story: fill reviews form deggendorf
   steps:
@@ -128,3 +140,6 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - action: action_submit_reviews_form
+      - action: utter_anything_else
+      - intent: deny
+      - action: utter_farewell

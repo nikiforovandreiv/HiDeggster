@@ -1,9 +1,15 @@
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
+from rasa_sdk import events
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormValidationAction
 from rasa_sdk.types import DomainDict
+import json
+
+json_data = open("actions/database.json", "r")
+answer_database = json.load(json_data)
+json_data.close()
 
 
 class ActionMainInfo(Action):
@@ -14,20 +20,8 @@ class ActionMainInfo(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        choice = tracker.get_slot("main_info_choice")
-        answers = {"german courses": "Attending a German language course is obligatory for all exchange students.\
-You can expect an extensive range of courses on the levels A1 to C1, which will enable you to improve\
-and extend your German language skills and at the same time get to know Germany and the German culture better.\
-You can obtain official certificates for German as a foreign language directly here at the DIT (TestDAF, telc).",
-                   "application": "Sure! What exactly do would you like to know? Do you want to know about language \
-skills, application period or how to apply?",
-                   "orientation week": "Sure! On which campus the orientation week, that you are interested in, will\
-be held ? Deggendorf, European Rottal-Inn (Pfarrkirchen) campus, or campus Cham?",
-                   "exchange": "Which course are you interested in ? Business, engineering, computer science\
-                   management",
-                   "reviews": "Sure! I can share opinions of students from all around the globe with you!\
-There are student testimonials from Brazil, Slovakia, Indonesia, Jordan, Mexico, Ecuador and Poland! Tell me the \
-country you want to know opinions from"}
+        choice = tracker.get_slot("main_info_choice").lower()
+        answers = answer_database["main_info"]
         if choice in answers:
             dispatcher.utter_message(text=answers[choice])
         else:
@@ -45,24 +39,13 @@ class ActionApplicationInfo(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         choice = tracker.get_slot("application_choice")
-        answers = {"how to apply": "Exchange students apply via Mobility Online. The link to access the online\
-        application form will be provided after you have offcially been nominated by your home university\
-        (free mover applicants: application link will be provided upon request).After completing the online\
-        application form, you will receive an email containing a link and login details. You then must follow\
-        the link and enter a password, before entering further details and uploading your documents (such as CV,\
-        photo, passport/national ID card, grade sheet, certificate of enrolment).Application as an exchange\
-        student at DIT is ONLY via Mobility Online. All required documents can be uploaded and nothing should\
-        be sent through traditional post or e-mail",
-                   "application period": "1 April - 1 June for October entries October - 1 December for March entries",
-                   "language requirements": "All exchange students must participate in a German course during the\
-                    semester. Additionally, an intensive German course (level A1) is offered during the Orientation\
-                     Week which is 1-2 weeks before the start of studies. Language certificates are not required"}
+        answers = answer_database["application_info"]
         if choice in answers:
             dispatcher.utter_message(text=answers[choice])
         else:
             dispatcher.utter_message(text="Sorry, I didn't get it. Can you repeat please?")
 
-        return []
+        return [events.SlotSet("application_choice", None)]
 
 
 class ValidateOrientationWeekForm(FormValidationAction):
@@ -116,7 +99,7 @@ class ActionOrientationWeekInfo(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        campus = tracker.get_slot("campus_choice")
+        campus = tracker.get_slot("campus_choice").lower()
         answers = {"deggendorf": f"Deggendorf, great!The Orientation Week with intensive German prep course is an\
          essential event for international students. During the Orientation Week, we will help you make friends,\
           settle in and guide you into a smooth start.\n",
@@ -144,10 +127,10 @@ class ActionOrientationWeekAdditional(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        campus = tracker.get_slot("campus_choice")
-        deggendorf_answers = {"date": "date of deggendorf orientation", "participants": "participants in deggendorf",
-                              "activities": "activities deggendorf", "location": "location deggendorf"}
-        cham_answers = {"date": "date of cham orientation", "programme": "programme cham"}
+        campus = tracker.get_slot("campus_choice").lower()
+        answers = answer_database["orientation_week_info"]
+        deggendorf_answers = answers["deggendorf"]
+        cham_answers = answers["cham"]
         if campus == "deggendorf":
             choice = tracker.get_slot("deggendorf_orientation_choice")
             if choice in deggendorf_answers:
@@ -156,11 +139,12 @@ class ActionOrientationWeekAdditional(Action):
             choice = tracker.get_slot("cham_orientation_choice")
             dispatcher.utter_message(text=cham_answers[choice])
         elif campus == "pfarrkirchen":
-            pass
+            dispatcher.utter_message(text=answers["pfarrkirchen"])
         else:
             dispatcher.utter_message(text="Sorry, I didn't get the right campus")
 
-        return []
+        return [events.SlotSet("campus_choice", None), events.SlotSet("deggendorf_orientation_choice", None),
+                events.SlotSet("cham_orientation_choice", None)]
 
 
 class ValidateExchangeCoursesForm(FormValidationAction):
@@ -199,36 +183,14 @@ class ActionSubmitExchangeCourses(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        answers = {"business": {"target group": "business target",
-                                           "prerequisites": "business prereq",
-                                           "content": "business content",
-                                           "overview": "business overview",
-                                           "starting date": "business date",
-                                           "fees": "business fees",
-                                           "contact": "business cont"},
-                              "engineering": {"target group": "engineering target",
-                                              "prerequisites": "engineering prereq",
-                                              "content": "engineering content",
-                                              "overview": "engineering overview",
-                                              "starting date": "engineeringdate",
-                                              "fees": "engineering fees",
-                                              "contact": "engineering cont"},
-                              "computer science": {"target group": "computer science target",
-                                                   "prerequisites": "computer science prereq",
-                                                   "content": "computer science content",
-                                                   "overview": "computer science overview",
-                                                   "starting date": "computer science date",
-                                                   "fees": "computer science fees",
-                                                   "contact": "computer science cont"},
-                              "management": "management",
-                              }
-        exchange_choice = tracker.get_slot("exchange_course")
+        answers = answer_database["exchange_courses_info"]
+        exchange_choice = tracker.get_slot("exchange_course").lower()
         if exchange_choice == "management":
             dispatcher.utter_message(text=answers[exchange_choice])
         else:
             specific = tracker.get_slot("deggendorf_exchange_specific")
             dispatcher.utter_message(text=answers[exchange_choice][specific])
-        return []
+        return [events.SlotSet("exchange_course", None), events.SlotSet("deggendorf_exchange_specific", None)]
 
 
 class ValidateReviewsForm(FormValidationAction):
@@ -266,11 +228,7 @@ class ActionAskStudent(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        answers = {"brazil": "re", "slovakia": "ro",
-                                "indonesia": "Ind", "jordan": "Jor",
-                                "mexico": "Mex", "ecuador": "Ecu",
-                                "poland": "Pol"
-                              }
+        answers = answer_database["ask_student"]
         country = tracker.get_slot("reviews_country_choice").lower()
         dispatcher.utter_message(text=answers[country])
         return []
@@ -284,13 +242,7 @@ class ActionSubmitReviewsForm(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        answers = {"rebeka": "re", "romana": "ro",
-                                "tri": "tr", "yangyang": "ya",
-                                "antonia": "an", "vinicius": "vi",
-                                "mayara": "ma", "qais": "qa",
-                                "alejandro": "al", "denisse": "de",
-                                "kornelia": "ko", "barbara": "ba"
-                              }
+        answers = answer_database["student_testimonials"]
         student = tracker.get_slot("student_choice").lower()
         dispatcher.utter_message(text=answers[student])
-        return []
+        return [events.SlotSet("reviews_country_choice", None), events.SlotSet("student_choice", None)]
