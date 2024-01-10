@@ -102,7 +102,8 @@ class ActionOrientationWeekInfo(Action):
         campus = tracker.get_slot("campus_choice").lower()
         answers = {"deggendorf": f"Deggendorf, great!The Orientation Week with intensive German prep course is an\
          essential event for international students. During the Orientation Week, we will help you make friends,\
-          settle in and guide you into a smooth start.\n",
+          settle in and guide you into a smooth start. Would you like to know the activities, participants, date or\
+location of the orientation week\n",
                    "pfarrkirchen": "European campus, sure! On your arrival at the European Campus Rottal-Inn you will\
                     take part in a so-called \"Orientation Day.\" In addition to many social events you will receive\
                      detailed course information and practical support with all necessary formalities, such as \
