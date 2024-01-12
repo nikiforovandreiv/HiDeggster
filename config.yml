@@ -34,6 +34,8 @@ pipeline:
      ambiguity_threshold: 0.1
    - name: RegexEntityExtractor
      use_lookup_tables: true
+   - name: FallbackClassifier
+     threshold: 0.3
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

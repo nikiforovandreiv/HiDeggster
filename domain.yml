@@ -22,7 +22,7 @@ responses:
   - text: "Hello! How can I help you?"
 
   utter_anything_else:
-  - text: "Did that help you? Or do you want to know more about anything else?"
+  - text: "Didn't that help you? Do you want to know more about anything else?"
 
   utter_goodbye:
   - text: "Goodbye!"
@@ -43,21 +43,48 @@ responses:
   utter_ask_application_choice:
     - text: "Would you like to know how to apply, language requirements or application period ?"
 
+  utter_invalid_application choice:
+    - text: "Sorry, can you repeat? Would you like to know how to apply, language requirements or application period ?"
+
   utter_ask_campus_choice:
     - text: "On which campus the orientation week, that you are interested in, will be held ?
+       Deggendorf, European Rottal-Inn (Pfarrkirchen) campus, or campus Cham?"
+
+  utter_invalid_campus_choice:
+    - text: "Sorry, can you rephrase that? On which campus the orientation week, that you are interested in, will be held ?
        Deggendorf, European Rottal-Inn (Pfarrkirchen) campus, or campus Cham?"
 
   utter_ask_deggendorf_orientation_choice:
     - text: "Would you like to know the date, activities, location or who can
          paticipate ?"
 
+  utter_invalid_deggendorf_orientation_choice:
+    - text: "I'm sorry, can you repeat? Would you like to know the date, activities, location or who can
+         paticipate ?"
+
   utter_ask_cham_orientation_choice:
     - text: "Would you like to know the dates or programme of the orientation ?"
 
+  utter_invalid_cham_orientation_choice:
+    - text: "I'm sorry, can you repeat? Would you like to know the dates or programme of the orientation ?"
+
   utter_ask_deggendorf_exchange_specific:
-    - text: "Do you want to know target, prerequisites, contact or fees?"
+    - text: "Do you want to know target group, prerequisites, overview of the course, starting date, contact or fees?"
 
+  utter_invalid_deggendorf_exchange_specific:
+    - text: "Sorry, can you repeat? Do you want to know target group, prerequisites, overview of the course, starting date, contact or fees?"
 
+  utter_ask_reviews_country_choice:
+    - text: "There are student testimonials from Brazil, Slovakia, Indonesia, Jordan, Mexico, Ecuador and Poland! Which country's opinions do ou want to hear?"
+
+  utter_invalid_reviews_country_choice:
+    - text: "Sorry, can you repeat? There are student testimonials from Brazil, Slovakia, Indonesia, Jordan, Mexico, Ecuador and Poland! Which country's opinions do ou want to hear?"
+
+  utter_please_rephrase:
+    - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+
+  utter_default:
+    - text: "I'm sorry, I can't help you."
 
 actions:
   - action_utter_main_info
@@ -96,6 +123,7 @@ slots:
         entity: application_choice_ent
   campus_choice:
     type: text
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: campus

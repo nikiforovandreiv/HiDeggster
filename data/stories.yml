@@ -37,13 +37,11 @@ stories:
           - main_info_choice: "orientation week"
       - action: action_utter_main_info
       - active_loop: orientation_week_form
-      - action: utter_ask_campus_choice
       - intent: campus_choice
         entities:
             - campus: "deggendorf"
-      - action: validate_orientation_week_form
       - slot_was_set: # user provides campus choice
-            - campus_choice: "deggendorf"
+          - campus_choice: "deggendorf"
       - action: action_orientation_week_info
       - action: utter_ask_deggendorf_orientation_choice
       - intent: deggendorf_orientation_choice
@@ -66,15 +64,13 @@ stories:
             - main_info_choice: "orientation week"
       - action: action_utter_main_info
       - active_loop: orientation_week_form
-      - action: utter_ask_campus_choice
       - intent: campus_choice
         entities:
+
             - campus: "cham"
-      - action: validate_orientation_week_form
       - slot_was_set: # user provides campus choice
-            - campus_choice: "cham"
+          - campus_choice: "cham"
       - action: action_orientation_week_info
-      - action: utter_ask_cham_orientation_choice
       - intent: cham_orientation_choice
         entities:
             - cham_orientation: "programme"
@@ -86,7 +82,8 @@ stories:
       - intent: deny
       - action: utter_farewell
 
-- story: fill exchange courses form deggendorf
+
+- story: fill exchange courses form
   steps:
       - intent: choose_main_info
         entities:
@@ -127,14 +124,14 @@ stories:
       - intent: reviews_country_choice
         entities:
             - reviews_country: "Brazil"
-      - slot_was_set: # user provides exchange course
+      - slot_was_set:
             - reviews_country_choice: "Brazil"
       - action: action_ask_student
       - intent: reviews_student_choice
         entities:
              - student: "Barbara"
-      - slot_was_set: # user provides exchange course
-                    - student_choice: "Barbara"
+      - slot_was_set:
+             - student_choice: "Barbara"
       - action: validate_reviews_form
       - active_loop: null
       - slot_was_set:

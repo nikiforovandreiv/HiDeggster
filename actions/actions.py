@@ -69,9 +69,15 @@ class ValidateOrientationWeekForm(FormValidationAction):
 
     @staticmethod
     def campus_db() -> List[Text]:
-        """Database of supported cuisines"""
+        """Database of supported campuses"""
 
         return ["deggendorf", "pfarrkirchen", "cham"]
+
+    @staticmethod
+    def deggendorf_choice_db() -> List[Text]:
+        """Database of supported campuses"""
+
+        return ["activities", "participants", "date", "location"]
 
     def validate_campus_choice(
             self,
@@ -90,6 +96,21 @@ class ValidateOrientationWeekForm(FormValidationAction):
             # user will be asked for the slot again
             return {"campus_choice": None}
 
+    def validate_deggendorf_orientation_choice(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        if slot_value in self.deggendorf_choice_db():
+            # validation succeeded
+            return {"deggendorf_orientation_choice": slot_value}
+        else:
+            # validation failed, set this slot to None so that the
+            # user will be asked for the slot again
+            return {"deggendorf_orientation_choice": None}
+
 
 class ActionOrientationWeekInfo(Action):
 
@@ -100,22 +121,11 @@ class ActionOrientationWeekInfo(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         campus = tracker.get_slot("campus_choice").lower()
-        answers = {"deggendorf": f"Deggendorf, great!The Orientation Week with intensive German prep course is an\
-         essential event for international students. During the Orientation Week, we will help you make friends,\
-          settle in and guide you into a smooth start. Would you like to know the activities, participants, date or\
-location of the orientation week\n",
-                   "pfarrkirchen": "European campus, sure! On your arrival at the European Campus Rottal-Inn you will\
-                    take part in a so-called \"Orientation Day.\" In addition to many social events you will receive\
-                     detailed course information and practical support with all necessary formalities, such as \
-                     registration at the town hall, health insurance, opening a bank account, German courses and\
-                      application for a students card. The International Office informs students about events in\
-                       the coming semester and international students will have the opportunity to ask all questions\
-                        about studying and living in Pfarrkirchen.",
-                   "cham": "Campus cham, great! Would you like to know the dates or programme of the week?"}
+        answers = answer_database["orientation_week_main"]
         if campus in answers:
             dispatcher.utter_message(text=answers[campus])
         else:
-            dispatcher.utter_message(text="Sorry, I didn't get the right campus")
+            dispatcher.utter_message(text="Sorry, I didn't get the right campus. Can you rephrase it?")
 
         return []
 
@@ -153,12 +163,14 @@ class ValidateExchangeCoursesForm(FormValidationAction):
         return "validate_exchange_courses_form"
 
     @staticmethod
-    def campus_db() -> List[Text]:
-        """Database of supported campuses"""
+    def exchange_db() -> List[Text]:
+        return ["business", "engineering", "computer science", "management"]
 
-        return ["deggendorf", "pfarrkirchen"]
+    @staticmethod
+    def deggendorf_exchange_db() -> List[Text]:
+        return ["prerequisites", "target group", "content", "overview", "starting date", "fees", "contact"]
 
-    def validate_campus_choice(
+    def validate_exchange_course(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -167,13 +179,28 @@ class ValidateExchangeCoursesForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate campus value."""
 
-        if slot_value in self.campus_db():
+        if slot_value in self.exchange_db():
             # validation succeeded
-            return {"campus_choice": slot_value}
+            return {"exchange_course": slot_value}
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
-            return {"campus_choice": None}
+            return {"exchange_course": None}
+
+    def validate_deggendorf_exchange_specific(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        if slot_value in self.deggendorf_exchange_db():
+            # validation succeeded
+            return {"deggendorf_exchange_specific": slot_value}
+        else:
+            # validation failed, set this slot to None so that the
+            # user will be asked for the slot again
+            return {"deggendorf_exchange_specific": None}
 
 
 class ActionSubmitExchangeCourses(Action):
@@ -186,11 +213,14 @@ class ActionSubmitExchangeCourses(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         answers = answer_database["exchange_courses_info"]
         exchange_choice = tracker.get_slot("exchange_course").lower()
-        if exchange_choice == "management":
-            dispatcher.utter_message(text=answers[exchange_choice])
+        if exchange_choice in answers:
+            if exchange_choice == "management":
+                dispatcher.utter_message(text=answers[exchange_choice])
+            else:
+                specific = tracker.get_slot("deggendorf_exchange_specific")
+                dispatcher.utter_message(text=answers[exchange_choice][specific])
         else:
-            specific = tracker.get_slot("deggendorf_exchange_specific")
-            dispatcher.utter_message(text=answers[exchange_choice][specific])
+            dispatcher.utter_message(text="Sorry, I didn't get what you meant")
         return [events.SlotSet("exchange_course", None), events.SlotSet("deggendorf_exchange_specific", None)]
 
 
@@ -203,6 +233,13 @@ class ValidateReviewsForm(FormValidationAction):
         """Database of supported campuses"""
 
         return ["poland", "ecuador", "mexico", "jordan", "indonesia", "slovakia", "brazil"]
+
+    @staticmethod
+    def student_db() -> List[Text]:
+        """Database of supported campuses"""
+
+        return ["rebeka", "romana", "tri", "yangyang", "antonia", "vinicius", "mayara", "qais", "alejandro",
+                "denisse", "kornelia", "barbara"]
 
     def validate_reviews_country_choice(
             self,
@@ -219,6 +256,22 @@ class ValidateReviewsForm(FormValidationAction):
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
             return {"reviews_country_choice": None}
+
+    def validate_student_choice(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        if slot_value in self.student_db():
+            # validation succeeded
+            return {"student_choice": slot_value}
+        else:
+            # validation failed, set this slot to None so that the
+            # user will be asked for the slot again
+            return {"student_choice": None}
 
 
 class ActionAskStudent(Action):
@@ -245,5 +298,8 @@ class ActionSubmitReviewsForm(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         answers = answer_database["student_testimonials"]
         student = tracker.get_slot("student_choice").lower()
-        dispatcher.utter_message(text=answers[student])
+        if student in answers:
+            dispatcher.utter_message(text=answers[student])
+        else:
+            dispatcher.utter_message(text="Sorry, I didn't get what you meant")
         return [events.SlotSet("reviews_country_choice", None), events.SlotSet("student_choice", None)]

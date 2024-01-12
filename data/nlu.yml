@@ -82,119 +82,138 @@ nlu:
 
 - intent: choose_main_info
   examples: |
-    -Tell me more about [application] choice(main_choice)
-    -[german courses] please(main_choice)
+    -Tell me more about [application] choice{"entity": "main_choice", "value": "application"}
+    -[german courses] please{"entity": "main_choice", "value": "german courses"}
+    -[german courses]{"entity": "main_choice", "value": "german courses"}
     -[courses]{"entity": "main_choice", "value": "german courses"}
     -[application]{"entity": "main_choice", "value": "application"}
-    -[Orientation week](main_choice)
-    -I want to know about [orientation week](main_choice)
+    -[Orientation week]{"entity": "main_choice", "value": "orientation week"}
+    -[Orientation]{"entity": "main_choice", "value": "orientation week"}
+    -I want to know about [orientation week]{"entity": "main_choice", "value": "orientation week"}
     -[Exchange semester choices]{"entity": "main_choice", "value": "exchange"}
     -[Exchange semester]{"entity": "main_choice", "value": "exchange"}
     -[Exchange course choices]{"entity": "main_choice", "value": "exchange"}
     -[Exchange courses]{"entity": "main_choice", "value": "exchange"}
+    -[Exchange]{"entity": "main_choice", "value": "exchange"}
     -Can you give me information on [exchange] semester choices(main_choice)
     -[Student testimonials]{"entity": "main_choice", "value": "reviews"}
-    - student [reviews](main_choice)
-    - [reviews](main_choice)
+    - student [reviews]{"entity": "main_choice", "value": "reviews"}
+    - [reviews]{"entity": "main_choice", "value": "reviews"}
 
 
 - intent: application_choice
   examples: |
-    - [How to apply]?(application_choice_ent)
-    - I want to know [how to apply](application_choice_ent)
-    - [How do i apply?]{"entity": "application_choice_ent", "value": "how to apply"}
-    - Tell me about [language requirements](application_choice_ent)
+    - [How to apply]?{"entity": "application_choice_ent", "value": "how to apply"}
+    - I want to know [how to apply]{"entity": "application_choice_ent", "value": "how to apply"}
+    - [How do i apply]?{"entity": "application_choice_ent", "value": "how to apply"}
+    - Tell me about [language requirements]{"entity": "application_choice_ent", "value": "language requirements"}
+    - [language requirements]{"entity": "application_choice_ent", "value": "language requirements"}
     - [language skills]{"entity": "application_choice_ent", "value": "language requirements"}
     - [language level]{"entity": "application_choice_ent", "value": "language requirements"}
-    - Can you give me information about[application period]?(application_choice_ent)
+    - Can you give me information about[application period]?{"entity": "application_choice_ent", "value": "application period"}
+    - [application period]{"entity": "application_choice_ent", "value": "application period"}
+    - [period of application]{"entity": "application_choice_ent", "value": "application period"}
 
 - intent: campus_choice
   examples: |
-    - campus [Cham](campus)
-    - [Deggendorf] campus(campus)
-    - [deggendorf](campus)
+    - campus [Cham]{"entity": "campus", "value": "cham"}
+    - [Cham]{"entity": "campus", "value": "cham"}
+    - [Deggendorf] campus{"entity": "campus", "value": "deggendorf"}
+    - [deggendorf]{"entity": "campus", "value": "deggendorf"}
     - I am interested in [Rottal-Inn] campus(campus)
-    - [pfarrkirchen] campus(campus)
+    - [pfarrkirchen] campus{"entity": "campus", "value": "pfarrkirchen"}
     - [European campus]{"entity": "campus", "value": "pfarrkirchen"}
-    - [European campus]
+    - [European Rottal-Inn (Pfarrkirchen) campus]{"entity": "campus", "value": "pfarrkirchen"}
+    - [Rottal-Inn]{"entity": "campus", "value": "pfarrkirchen"}
 
 - intent: deggendorf_orientation_choice
   examples: |
-    - I want to know about [activities](deggendorf_orientation)
+    - I want to know about [activities]{"entity": "deggendorf_orientation", "value": "activities"}
+    - [activities]{"entity": "deggendorf_orientation", "value": "activities"}
     - [Who can paticipate]?{"entity": "deggendorf_orientation", "value": "participants"}
-    - What is the [date]?(deggendorf_orientation)
-    - Tell me about the [location](deggendorf_orientation)
+    - [participants]{"entity": "deggendorf_orientation", "value": "participants"}
+    - What is the [date]?{"entity": "deggendorf_orientation", "value": "date"}
+    - [date]{"entity": "deggendorf_orientation", "value": "date"}
+    - Tell me about the [location]{"entity": "deggendorf_orientation", "value": "location"}
     - [Where it will be] held?{"entity": "deggendorf_orientation", "value": "location"}
 
 - intent: cham_orientation_choice
   examples: |
-    - I want to know about the [programme](cham_orientation)
-    - [programme](cham_orientation)
-    - [programme] please(cham orientation)
-    - [date]s(cham_orientation)
-    - What is the [date]?(cham_orientation)
+    - I want to know about the [programme]{"entity": "cham_orientation", "value": "programme"}
+    - [programme]{"entity": "cham_orientation", "value": "programme"}
+    - [programme] please{"entity": "cham_orientation", "value": "programme"}
+    - [date]s{"entity": "cham_orientation", "value": "date"}
+    - What is the [date]?{"entity": "cham_orientation", "value": "date"}
     - [When it will be] held?{"entity": "cham_orientation", "value": "date"}
 
 - intent: deggendorf_exchange_course
   examples: |
-    - I want to know about the general [business] study semester(exchange_course_ent)
-    - General [business] exchange semester(exchange_course_ent)
-    - General [engineering] exchange semester(exchange_course_ent)
-    - International [computer science] exchange semester please(exchange_course_ent)
-    - Master of strategic and international [management](exchange_course_ent)
+    - I want to know about the general [business] study semester{"entity": "exchange_course_ent", "value": "business"}
+    - [business]{"entity": "exchange_course_ent", "value": "business"}
+    - General [business] exchange semester{"entity": "exchange_course_ent", "value": "business"}
+    - General [engineering] exchange semester{"entity": "exchange_course_ent", "value": "engineering"}
+    - [engineering]{"entity": "exchange_course_ent", "value": "engineering"}
+    - International [computer science] exchange semester please{"entity": "exchange_course_ent", "value": "computer science"}
+    - [computer science]{"entity": "exchange_course_ent", "value": "computer science"}
+    - Master of strategic and international [management]{"entity": "exchange_course_ent", "value": "management"}
+    - [management]{"entity": "exchange_course_ent", "value": "management"}
 
 - intent: deggendorf_exchange_specific
   examples: |
-    - I want to know the [prerequisites](deggendorf_exchange_specific_ent)
-    - [prerequisites](deggendorf_exchange_specific_ent)
-    - What is the [target group](deggendorf_exchange_specific_ent)
-    - [course content](deggendorf_exchange_specific_ent)
-    - I'd like to know the course [content](deggendorf_exchange_specific_ent)
-    - [content] of the course(deggendorf_exchange_specific_ent)
-    - course [overview](deggendorf_exchange_specific_ent)
-    - [overview] of the course(deggendorf_exchange_specific_ent)
-    - [starting date](deggendorf_exchange_specific_ent)
-    - [starting date]s(deggendorf_exchange_specific_ent)
-    - What are the [fees](deggendorf_exchange_specific_ent)
-    - [fees](deggendorf_exchange_specific_ent)
-    - [contact](deggendorf_exchange_specific_ent)
+    - I want to know the [prerequisites]{"entity": "deggendorf_exchange_specific_ent", "value": "prerequisites"}
+    - [prerequisites]{"entity": "deggendorf_exchange_specific_ent", "value": "prerequisites"}
+    - What is the [target group]{"entity":"deggendorf_exchange_specific_ent", "value": "target group"}
+    - [target]{"entity":"deggendorf_exchange_specific_ent", "value": "target group"}
+    - course [content]{"entity":"deggendorf_exchange_specific_ent", "value": "content"}
+    - [content]{"entity":"deggendorf_exchange_specific_ent", "value": "content"}
+    - I'd like to know the course [content]{"entity":"deggendorf_exchange_specific_ent", "value": "content"}
+    - [content] of the course{"entity":"deggendorf_exchange_specific_ent", "value": "content"}
+    - course [overview]{"entity":"deggendorf_exchange_specific_ent", "value": "overview"}
+    - [overview] of the course{"entity":"deggendorf_exchange_specific_ent", "value": "overview"}
+    - [overview]{"entity":"deggendorf_exchange_specific_ent", "value": "overview"}
+    - [starting date]{"entity":"deggendorf_exchange_specific_ent", "value": "starting date"}
+    - [When does the semester start]{"entity":"deggendorf_exchange_specific_ent", "value": "starting date"}
+    - [starting date]s{"entity":"deggendorf_exchange_specific_ent", "value": "starting date"}
+    - What are the [fees]{"entity":"deggendorf_exchange_specific_ent", "value": "fees"}
+    - [fees]{"entity":"deggendorf_exchange_specific_ent", "value": "fees"}
+    - [contact]{"entity":"deggendorf_exchange_specific_ent", "value": "content"}
 
 - intent: reviews_country_choice
   examples: |
-    - [Brazil](reviews_country)
-    - [Brazil] reviews(reviews_country)
-    - [Slovakia](reviews_country)
-    - [Slovakia] please(reviews_country)
-    - [Indonesia](reviews_country)
-    - Tell me about [Indonesia]n reviews(reviews_country)
-    - reviews from [Indonesia](reviews_country)
-    - [Jordan](reviews_country)
-    - reviews from [Poland](reviews_country)
-    - reviews from [Jordan](reviews_country)
-    - [Mexico](reviews_country)
-    - reviews from [Mexico] please(reviews_country)
-    - [Ecuador](reviews_country)
-    - [Ecuador] students(reviews_country)
-    - [Poland](reviews_country)
-    - [Poland] student reviews(reviews_country)
+    - [Brazil] {"entity":"reviews_country", "value": "brazil"}
+    - [Brazil] reviews{"entity":"reviews_country", "value": "brazil"}
+    - [Slovakia]{"entity":"reviews_country", "value": "slovakia"}
+    - [Slovakia] please{"entity":"reviews_country", "value": "slovakia"}
+    - [Indonesia]{"entity":"reviews_country", "value": "indonesia"}
+    - Tell me about [Indonesia]n reviews{"entity":"reviews_country", "value": "indonesia"}
+    - reviews from [Indonesia]{"entity":"reviews_country", "value": "indonesia"}
+    - [Jordan]{"entity":"reviews_country", "value": "jordan"}
+    - reviews from [Poland]{"entity":"reviews_country", "value": "poland"}
+    - reviews from [Jordan]{"entity":"reviews_country", "value": "jordan"}
+    - [Mexico]{"entity":"reviews_country", "value": "mexico"}
+    - reviews from [Mexico] please{"entity":"reviews_country", "value": "mexico"}
+    - [Ecuador]{"entity":"reviews_country", "value": "ecuador"}
+    - [Ecuador] students{"entity":"reviews_country", "value": "ecuador"}
+    - [Poland]{"entity":"reviews_country", "value": "poland"}
+    - [Poland] student reviews{"entity":"reviews_country", "value": "poland"}
 
 - intent: reviews_student_choice
   examples: |
-    - [rebeka](student)
-    - [rebeka]s review(student)
-    - [romana](student)
-    - [romana]s review(student)
-    - [tri](student)
-    - [tri]s review(student)
-    - [yangyang](student)
-    - [antonia](student)
-    - [vinicius](student)
-    - [mayara](student)
-    - [qais](student)
-    - [alejandro](student)
-    - [denisse](student)
-    - [kornelia](student)
-    - [barbara](student)
+    - [rebeka]{"entity":"student", "value": "rebeka"}
+    - [rebeka]s review{"entity":"student", "value": "rebeka"}
+    - [romana]{"entity":"student", "value": "romana"}
+    - [romana]s review{"entity":"student", "value": "romana"}
+    - [tri]{"entity":"student", "value": "tri"}
+    - [tri]s review{"entity":"student", "value": "tri"}
+    - [yangyang]{"entity":"student", "value": "yangyang"}
+    - [antonia]{"entity":"student", "value": "antonia"}
+    - [vinicius]{"entity":"student", "value": "vinicius"}
+    - [mayara]{"entity":"student", "value": "mayara"}
+    - [qais]{"entity":"student", "value": "qais"}
+    - [alejandro]{"entity":"student", "value": "alejandro"}
+    - [denisse]{"entity":"student", "value": "denisse"}
+    - [kornelia]{"entity":"student", "value": "kornelia"}
+    - [barbara]{"entity":"student", "value": "barbara"}
 
 - lookup: main_choice
   examples: |
