@@ -1,4 +1,5 @@
 
+
 # Instalation
 
 ## Prerequisites
@@ -77,14 +78,14 @@ python app.py
 
 This assumes you have a Flask application (e.g., `app.py`) that handles user inputs and communicates with the Rasa bot.
 
-## Step 7: Interact with Your Rasa Bot
+## Step 7: Interact with Bot
 
 You can now interact with your Rasa bot by sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5002/api`:
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5002/api
 ```
 
-## Additional Step : Interact with Your Rasa Bot via console
+## Additional Step : Interact with Bot via console
 
 You can also interact with bot via console using following command:
 ```bash
