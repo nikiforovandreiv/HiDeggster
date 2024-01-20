@@ -1,4 +1,5 @@
-
+# Project description
+**Hi, Deggster!**  is a domain specific chat-bot, that helps international exchange students to find information about their first steps in THD
 
 # Instalation
 
@@ -96,3 +97,24 @@ rasa shell
 
 - [Rasa Documentation](https://rasa.com/docs/)
 - [Rasa Community Forum](https://forum.rasa.com/)
+
+# Basic usage
+## Dialogue start
+To start the dialogue simply greet the bot. For example say "Hi, Deggster!". Depending on what you are using to communicate, either requests to localserver or console, send a message to the bot appropriately.
+## Dialogue flow
+After greeting the bot, it will guide you on every step towards the information you want to know.
+## Use cases
+You can ask bot about:
+ 
+
+ - student reviews 
+ - exchange cource choice 
+ - application information  
+ - language courses
+ - orientation week
+
+Sometimes, if key-words are written badly by user, bot can misunderstand it and will ask user to repeat their request without mistakes in key-words
+## Help
+If you are lost, you can ask bot for help. It will list the options to choose from to proceed.
+# Implementation of requests
+# Work done
