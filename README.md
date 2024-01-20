@@ -1,3 +1,4 @@
+
 # Instalation
 
 ## Prerequisites
@@ -8,13 +9,13 @@ Before you begin, ensure you have the following prerequisites installed on your 
 - pip (Python package installer)
 - Virtualenv (optional but recommended)
 
-## Step 1: Clone Your Rasa Bot Repository
+## Step 1: Clone Repository
 
-Clone your existing Rasa bot repository to your local machine using the following command:
+Clone repository to your local machine using the following command:
 
 ```bash
-git clone <your_repository_url>
-cd <your_repository_directory>
+git clone https://mygit.th-deg.de/mz02475/sas-project.git
+cd sas-project
 ```
 
 ## Step 2: Create a Virtual Environment (Optional)
@@ -44,7 +45,6 @@ Install Rasa Open Source and its dependencies using the following command:
 pip install -r requirements.txt
 ```
 
-This assumes that your `requirements.txt` file contains the necessary dependencies for your Rasa project.
 
 ## Step 4: Train Your Rasa Model
 
@@ -71,6 +71,7 @@ This command will start the custom action server that executes the actions defin
 Start the Flask server to send messages to the bot and receive answers:
 
 ```bash
+cd webserver
 python app.py
 ```
 
@@ -78,11 +79,19 @@ This assumes you have a Flask application (e.g., `app.py`) that handles user inp
 
 ## Step 7: Interact with Your Rasa Bot
 
-You can now interact with your Rasa bot by sending messages to the Flask server. Open your web browser and navigate to `http://localhost:5000` (or the port you specified in your Flask application).
+You can now interact with your Rasa bot by sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5002/api`:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5002/api
+```
+
+## Additional Step : Interact with Your Rasa Bot via console
+
+You can also interact with bot via console using following command:
+```bash
+rasa shell
+```
 
 ## Additional Resources
 
 - [Rasa Documentation](https://rasa.com/docs/)
 - [Rasa Community Forum](https://forum.rasa.com/)
-
-Make sure to customize the steps based on your specific project structure and configurations.
