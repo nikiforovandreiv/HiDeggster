@@ -1,5 +1,5 @@
 # Project description
-**Hi, Deggster!**  is a domain specific chat-bot, that helps international exchange students to find information about their first steps in THD
+**Hi, Deggster!**  is a domain specific chat-bot, that helps international exchange students to find information about their first steps in THD! To know more about the project, please, visit our [wiki](https://mygit.th-deg.de/mz02475/sas-project/-/wikis/home)
 
 # Instalation
 
