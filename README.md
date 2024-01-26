@@ -7,7 +7,7 @@
 
 Before you begin, ensure you have the following prerequisites installed on your system:
 
-- Python 3.6 or higher
+- Python >= 3.6 and <= 3.10 
 - pip (Python package installer)
 - Virtualenv (optional but recommended)
 
