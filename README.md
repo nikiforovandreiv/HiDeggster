@@ -1,3 +1,10 @@
+Zyhmantovich Mikita 22210475
+
+Nikiforov Andrei 22211653
+
+Title name: "Hi, Deggster!"
+
+MyGit repository link: https://mygit.th-deg.de/mz02475/sas-project.git
 # Project description
 **Hi, Deggster!**  is a domain specific chat-bot, that helps international exchange students to find information about their first steps in THD! To know more about the project, please, visit our [wiki](https://mygit.th-deg.de/mz02475/sas-project/-/wikis/home)
 
@@ -81,16 +88,15 @@ This assumes you have a Flask application (e.g., `app.py`) that handles user inp
 
 ## Step 7: Interact with Bot
 
-You can now interact with your Rasa bot by sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5002/api`:
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5002/api
-```
-
-## Additional Step : Interact with Bot via console
-
-You can also interact with bot via console using following command:
+You can now interact with bot via console using following command:
 ```bash
 rasa shell
+```
+
+## Additional Step : Interact with Bot hi_deggster.py or webserver
+You can also interact with your Rasa bot by executing hi_deggster.py or sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5002/api`:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5002/api
 ```
 
 ## Additional Resources
@@ -102,7 +108,7 @@ rasa shell
 ## Dialogue start
 To start the dialogue simply greet the bot. For example say "Hi, Deggster!". Depending on what you are using to communicate, either requests to localserver or console, send a message to the bot appropriately.
 ## Dialogue flow
-After greeting the bot, it will guide you on every step towards the information you want to know.
+After greeting the bot, it will guide you through every step towards the information you want to know.
 ## Use cases
 You can ask bot about:
  
@@ -113,8 +119,52 @@ You can ask bot about:
  - language courses
  - orientation week
 
+## Notes
 Sometimes, if key-words are written badly by user, bot can misunderstand it and will ask user to repeat their request without mistakes in key-words
 ## Help
 If you are lost, you can ask bot for help. It will list the options to choose from to proceed.
 # Implementation of requests
+
+### Personas
+We have created 1 system persona and 3 user personas
+
+### Use cases
+We have made 5 critical use cases, use case diagram and also added unhappy cases 
+
+### Example dialogs
+We came up with 10 example dialogs and also a couple unhappy paths
+
+### Rasa Implementation
+we have created:
+
+- 15 intents
+- 11 custom actions
+- 15 rules
+- 9 entities
+- 9 slots
+- 9 look-up tables
+- 4 forms
+- two step fallbacl
+- JSON database for answers
+
+We used forms to achieve the best dialogue flow and specify information needed by user. Look-up tables were created to ensure better entity spotting. Two step fallback mechanism ensures the proper continuation of dialogue even if the user intent was not recognized
+
+Validate actions in actions.py were used to validate the values in slots for form filling. If the slot is not correctly filled, bot asks the user to try again
+
+ Custom actions were used to provide the flexibility in answer choices and to retrieve information from JSON database
+
 # Work done
+Andrei Nikiforov:
+- Personas
+- Example dialogs
+- Implementation yml-files (domain, nlu)
+
+Mikita Zyhmantovich:
+- Use cases
+- Dialog flow
+- Implementation yml-files (stories, rules)
+- Flask server
+
+Both: Rasa Implementation(actions.py, forms, fallback, pipeline)
+
+We helped each other during the whole project with our respective parts, discussed Implementation and implemented it together. 
