@@ -3,6 +3,7 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
+    - Hi, Deggster!
     - hey
     - hello
     - hi
@@ -31,6 +32,8 @@ nlu:
     - see you later
     - Thank you goodbye
     - That's all i needed to know
+    - Thanks! Goodbye!
+    - Appreciate it! Goodbye!
 
 - intent: affirm
   examples: |
@@ -46,11 +49,15 @@ nlu:
   examples: |
     - no
     - n
-    - never
     - I don't think so
     - don't like that
-    - no way
     - not really
+    - No, that's perfect. Thanks a lot!
+    - No, thanks. That's all I needed. Bye!
+    - No, that's perfect. Thanks for the info!
+    - No, that's all. Thanks for the information!
+    - No, that's all. Thanks for the details!
+    - No, that covers it. Thanks for the info!.
 
 - intent: persona_question
   examples: |
@@ -83,13 +90,17 @@ nlu:
 - intent: choose_main_info
   examples: |
     -Tell me more about [application] choice{"entity": "main_choice", "value": "application"}
+    -I'm having trouble with the mobile version of THD's website. Can you help me with the [application] process?{"entity": "main_choice", "value": "application"}
+    -I'm struggling with the mobile version of THD's website. Can you guide me through the [application] process?{"entity": "main_choice", "value": "application"}
     -[german courses] please{"entity": "main_choice", "value": "german courses"}
     -[german courses]{"entity": "main_choice", "value": "german courses"}
     -[courses]{"entity": "main_choice", "value": "german courses"}
     -[application]{"entity": "main_choice", "value": "application"}
     -[Orientation week]{"entity": "main_choice", "value": "orientation week"}
+    -I'm a new student and want to know about the [orientation week]. Can you give me some information?{"entity": "main_choice", "value": "orientation week"}
     -[Orientation]{"entity": "main_choice", "value": "orientation week"}
     -I want to know about [orientation week]{"entity": "main_choice", "value": "orientation week"}
+    -I'm interested in details about the [exchange semester]{"entity": "main_choice", "value": "exchange"}
     -[Exchange semester choices]{"entity": "main_choice", "value": "exchange"}
     -[Exchange semester]{"entity": "main_choice", "value": "exchange"}
     -[Exchange course choices]{"entity": "main_choice", "value": "exchange"}
@@ -99,6 +110,8 @@ nlu:
     -[Student testimonials]{"entity": "main_choice", "value": "reviews"}
     - student [reviews]{"entity": "main_choice", "value": "reviews"}
     - [reviews]{"entity": "main_choice", "value": "reviews"}
+    - I want to know the [reviews]{"entity": "main_choice", "value": "reviews"}
+    - [I'm curious about student experiences]{"entity": "main_choice", "value": "reviews"}
 
 
 - intent: application_choice
@@ -111,6 +124,8 @@ nlu:
     - [language skills]{"entity": "application_choice_ent", "value": "language requirements"}
     - [language level]{"entity": "application_choice_ent", "value": "language requirements"}
     - Can you give me information about[application period]?{"entity": "application_choice_ent", "value": "application period"}
+    - I want to know about the [application period]{"entity": "application_choice_ent", "value": "application period"}
+    - Just tell me about the [application period]{"entity": "application_choice_ent", "value": "application period"}
     - [application period]{"entity": "application_choice_ent", "value": "application period"}
     - [period of application]{"entity": "application_choice_ent", "value": "application period"}
 
@@ -122,6 +137,7 @@ nlu:
     - [deggendorf]{"entity": "campus", "value": "deggendorf"}
     - I am interested in [Rottal-Inn] campus(campus)
     - [pfarrkirchen] campus{"entity": "campus", "value": "pfarrkirchen"}
+    - I need info on [European Campus]{"entity": "campus", "value": "pfarrkirchen"}
     - [European campus]{"entity": "campus", "value": "pfarrkirchen"}
     - [European Rottal-Inn (Pfarrkirchen) campus]{"entity": "campus", "value": "pfarrkirchen"}
     - [Rottal-Inn]{"entity": "campus", "value": "pfarrkirchen"}
@@ -129,6 +145,7 @@ nlu:
 - intent: deggendorf_orientation_choice
   examples: |
     - I want to know about [activities]{"entity": "deggendorf_orientation", "value": "activities"}
+    - [Activities], I guess{"entity": "deggendorf_orientation", "value": "activities"}
     - [activities]{"entity": "deggendorf_orientation", "value": "activities"}
     - [Who can paticipate]?{"entity": "deggendorf_orientation", "value": "participants"}
     - [participants]{"entity": "deggendorf_orientation", "value": "participants"}
@@ -150,6 +167,7 @@ nlu:
   examples: |
     - I want to know about the general [business] study semester{"entity": "exchange_course_ent", "value": "business"}
     - [business]{"entity": "exchange_course_ent", "value": "business"}
+    - I'm planning to study general [business]{"entity": "exchange_course_ent", "value": "business"}
     - General [business] exchange semester{"entity": "exchange_course_ent", "value": "business"}
     - General [engineering] exchange semester{"entity": "exchange_course_ent", "value": "engineering"}
     - [engineering]{"entity": "exchange_course_ent", "value": "engineering"}
@@ -172,8 +190,10 @@ nlu:
     - [overview] of the course{"entity":"deggendorf_exchange_specific_ent", "value": "overview"}
     - [overview]{"entity":"deggendorf_exchange_specific_ent", "value": "overview"}
     - [starting date]{"entity":"deggendorf_exchange_specific_ent", "value": "starting date"}
+    - I want to know the [starting date] to plan my trip{"entity":"deggendorf_exchange_specific_ent", "value": "starting date"}
     - [When does the semester start]{"entity":"deggendorf_exchange_specific_ent", "value": "starting date"}
     - [starting date]s{"entity":"deggendorf_exchange_specific_ent", "value": "starting date"}
+    - I'm interested in [fees] to plan my budget{"entity":"deggendorf_exchange_specific_ent", "value": "fees"}
     - What are the [fees]{"entity":"deggendorf_exchange_specific_ent", "value": "fees"}
     - [fees]{"entity":"deggendorf_exchange_specific_ent", "value": "fees"}
     - [contact]{"entity":"deggendorf_exchange_specific_ent", "value": "content"}
@@ -182,7 +202,9 @@ nlu:
   examples: |
     - [Brazil] {"entity":"reviews_country", "value": "brazil"}
     - [Brazil] reviews{"entity":"reviews_country", "value": "brazil"}
+    -  I want to know what [Brazil] has to say about THD{"entity":"reviews_country", "value": "brazil"}
     - [Slovakia]{"entity":"reviews_country", "value": "slovakia"}
+    - Reviews from [Slovakia]{"entity":"reviews_country", "value": "slovakia"}
     - [Slovakia] please{"entity":"reviews_country", "value": "slovakia"}
     - [Indonesia]{"entity":"reviews_country", "value": "indonesia"}
     - Tell me about [Indonesia]n reviews{"entity":"reviews_country", "value": "indonesia"}
@@ -203,10 +225,12 @@ nlu:
     - [rebeka]s review{"entity":"student", "value": "rebeka"}
     - [romana]{"entity":"student", "value": "romana"}
     - [romana]s review{"entity":"student", "value": "romana"}
+    - I want to know what [romana] had to say{"entity":"student", "value": "romana"}
     - [tri]{"entity":"student", "value": "tri"}
     - [tri]s review{"entity":"student", "value": "tri"}
     - [yangyang]{"entity":"student", "value": "yangyang"}
     - [antonia]{"entity":"student", "value": "antonia"}
+    - Let's go with [antonia]{"entity":"student", "value": "antonia"}
     - [vinicius]{"entity":"student", "value": "vinicius"}
     - [mayara]{"entity":"student", "value": "mayara"}
     - [qais]{"entity":"student", "value": "qais"}

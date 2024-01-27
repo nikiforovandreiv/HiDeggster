@@ -1,5 +1,4 @@
 from typing import Any, Text, Dict, List
-
 from rasa_sdk import Action, Tracker
 from rasa_sdk import events
 from rasa_sdk.executor import CollectingDispatcher
@@ -7,7 +6,7 @@ from rasa_sdk.forms import FormValidationAction
 from rasa_sdk.types import DomainDict
 import json
 
-json_data = open("actions/database.json", "r")
+json_data = open("database.json", "r")
 answer_database = json.load(json_data)
 json_data.close()
 
@@ -230,13 +229,13 @@ class ValidateReviewsForm(FormValidationAction):
 
     @staticmethod
     def country_db() -> List[Text]:
-        """Database of supported campuses"""
+        """Database of supported countries"""
 
         return ["poland", "ecuador", "mexico", "jordan", "indonesia", "slovakia", "brazil"]
 
     @staticmethod
     def student_db() -> List[Text]:
-        """Database of supported campuses"""
+        """Database of supported names"""
 
         return ["rebeka", "romana", "tri", "yangyang", "antonia", "vinicius", "mayara", "qais", "alejandro",
                 "denisse", "kornelia", "barbara"]

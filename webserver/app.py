@@ -1,15 +1,19 @@
 from flask import Flask, request, jsonify
 from rasa.core.agent import Agent
+import os
 
 app = Flask(__name__)
 
+path = "../models"
 # we load our trained Rasa model
-agent = Agent.load('../models/20231211-111055-muffled-slice.tar.gz')
+file_path = os.path.join(path, os.listdir(path)[0])
+print(file_path)
+agent = Agent.load(file_path)
 
 
 async def handle_message(user_message):
     rasa_response = await agent.handle_text(user_message)
-    response_text = rasa_response[0]['text'] if rasa_response else "Sorry, I didn't understand that."
+    response_text = rasa_response[0]['text'] if rasa_response else "error occured"
     return response_text
 
 
@@ -26,4 +30,4 @@ async def bot():
     return jsonify({"message": response_text})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

@@ -19,10 +19,10 @@ intents:
 
 responses:
   utter_greet:
-  - text: "Hello! How can I help you?"
+  - text: "Hello! I can answer to your questions about exchange semester! How can I help you today?"
 
   utter_anything_else:
-  - text: "Didn't that help you? Do you want to know more about anything else?"
+  - text: "Is there anything else I can help you with?"
 
   utter_goodbye:
   - text: "Goodbye!"
