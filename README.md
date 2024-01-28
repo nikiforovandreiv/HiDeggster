@@ -17,6 +17,7 @@ Before you begin, ensure you have the following prerequisites installed on your 
 - Python >= 3.6 and <= 3.10 
 - pip (Python package installer)
 - Virtualenv (optional but recommended)
+- Python and git should be added to PATH
 
 ## Step 1: Clone Repository
 
@@ -70,6 +71,7 @@ This will train the NLU (Natural Language Understanding) and Core models based o
 Start the Rasa action server to handle custom actions:
 
 ```bash
+cd actions
 rasa run actions
 ```
 
@@ -80,6 +82,7 @@ This command will start the custom action server that executes the actions defin
 Start the Flask server to send messages to the bot and receive answers:
 
 ```bash
+cd ..
 cd webserver
 python app.py
 ```
@@ -90,13 +93,17 @@ This assumes you have a Flask application (e.g., `app.py`) that handles user inp
 
 You can now interact with bot via console using following command:
 ```bash
-rasa shell
+cd.. # if you are in webserver folder
+rasa shell # you must be in sas-project folder to run this
 ```
-
-## Additional Step : Interact with Bot hi_deggster.py or webserver
-You can also interact with your Rasa bot by executing hi_deggster.py or sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5002/api`:
+To stop the chat use:
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5002/api
+/stop
+```
+## Additional Step : Interact with Bot hi_deggster.py or webserver
+You can also interact with your Rasa bot by executing hi_deggster.py or sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5000/bot`:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5000/bot
 ```
 
 ## Additional Resources
@@ -154,6 +161,8 @@ We used forms to achieve the best dialogue flow and specify information needed b
 Validate actions in actions.py were used to validate the values in slots for form filling. If the slot is not correctly filled, bot asks the user to try again
 
 Custom actions were used to provide the flexibility in answer choices and to retrieve information from JSON database
+
+We have created a simple REST-API that allows user to interact with bot using POST request to local server. 
 
 # Work done
 Andrei Nikiforov:
