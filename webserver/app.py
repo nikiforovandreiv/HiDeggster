@@ -1,21 +1,22 @@
 from flask import Flask, request, jsonify
 from rasa.core.agent import Agent
+from rasa.utils.endpoints import EndpointConfig
 import os
 
 app = Flask(__name__)
 
-path = "../models"
-# we load our trained Rasa model
-file_path = os.path.join(path, os.listdir(path)[0])
+path = "..\models"
+# Load the trained Rasa model
+file_path = os.path.join(path, os.listdir(path)[-1])
 print(file_path)
-agent = Agent.load(file_path)
-
+action_endpoint = EndpointConfig(url="http://localhost:5055/webhook")
+agent = Agent.load(file_path, action_endpoint=action_endpoint)
 
 async def handle_message(user_message):
-    rasa_response = await agent.handle_text(user_message)
-    response_text = rasa_response[0]['text'] if rasa_response else "error occured"
-    return response_text
-
+    rasa_responses = await agent.handle_text(user_message)
+    response_texts = [response['text'] for response in rasa_responses if 'text' in response]
+    # Concatenate responses with newline
+    return '\n'.join(response_texts)
 
 @app.route('/bot', methods=['POST'])
 async def bot():

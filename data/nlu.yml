@@ -180,6 +180,7 @@ nlu:
   examples: |
     - I want to know the [prerequisites]{"entity": "deggendorf_exchange_specific_ent", "value": "prerequisites"}
     - [prerequisites]{"entity": "deggendorf_exchange_specific_ent", "value": "prerequisites"}
+    - I want to know the [prerequisites] to know if im elligible or not{"entity": "deggendorf_exchange_specific_ent", "value": "prerequisites"}
     - What is the [target group]{"entity":"deggendorf_exchange_specific_ent", "value": "target group"}
     - [target]{"entity":"deggendorf_exchange_specific_ent", "value": "target group"}
     - course [content]{"entity":"deggendorf_exchange_specific_ent", "value": "content"}

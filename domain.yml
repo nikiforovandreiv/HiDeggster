@@ -113,6 +113,7 @@ entities:
 slots:
   main_info_choice:
     type: text
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: main_choice
