@@ -17,6 +17,7 @@ Before you begin, ensure you have the following prerequisites installed on your 
 - Python >= 3.6 and <= 3.10 
 - pip (Python package installer)
 - Virtualenv (optional but recommended)
+- Python and git should be added to PATH
 
 ## Step 1: Clone Repository
 
