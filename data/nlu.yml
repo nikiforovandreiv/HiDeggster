@@ -111,7 +111,7 @@ nlu:
     - student [reviews]{"entity": "main_choice", "value": "reviews"}
     - [reviews]{"entity": "main_choice", "value": "reviews"}
     - I want to know the [reviews]{"entity": "main_choice", "value": "reviews"}
-    - [I'm curious about student experiences]{"entity": "main_choice", "value": "reviews"}
+    - I'm curious about [student experiences]{"entity": "main_choice", "value": "reviews"}
 
 
 - intent: application_choice
