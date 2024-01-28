@@ -92,11 +92,14 @@ You can now interact with bot via console using following command:
 ```bash
 rasa shell
 ```
-
-## Additional Step : Interact with Bot hi_deggster.py or webserver
-You can also interact with your Rasa bot by executing hi_deggster.py or sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5002/api`:
+To stop the chat use:
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5002/api
+/stop
+```
+## Additional Step : Interact with Bot hi_deggster.py or webserver
+You can also interact with your Rasa bot by executing hi_deggster.py or sending messages to the Flask server. Use curl or postman to issue POST request on `http://localhost:5000/bot`:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"message": "Your message here"}' http://localhost:5000/bot
 ```
 
 ## Additional Resources
