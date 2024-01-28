@@ -158,6 +158,8 @@ Validate actions in actions.py were used to validate the values in slots for for
 
 Custom actions were used to provide the flexibility in answer choices and to retrieve information from JSON database
 
+We have created a simple REST-API that allows user to interact with bot using POST request to local server. 
+
 # Work done
 Andrei Nikiforov:
 - Personas
