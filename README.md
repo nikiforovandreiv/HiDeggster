@@ -146,15 +146,15 @@ We came up with 10 example dialogs and also a couple unhappy paths
 ### Rasa Implementation
 we have created:
 
-- 15 intents
-- 11 custom actions
-- 15 rules
-- 9 entities
-- 9 slots
-- 9 look-up tables
-- 4 forms
+- 15 intents(nlu.yml)
+- 11 custom actions(actions.py)
+- 15 rules(rules.yml)
+- 9 entities(domain.yml)
+- 9 slots(domain.yml)
+- 9 look-up tables(nlu.yml)
+- 4 forms(domain.yml)
 - two step fallback mechanism
-- JSON database for answers
+- JSON database for answers(database.json)
 
 We used forms to achieve the best dialogue flow and specify information needed by user by asking questions with increasing specificity. Look-up tables were created to ensure better entity spotting. Two step fallback mechanism ensures the proper continuation of dialogue even if the user intent was not recognized
 
