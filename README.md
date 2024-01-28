@@ -121,6 +121,8 @@ You can ask bot about:
 
 ## Notes
 Sometimes, if key-words are written badly by user, bot can misunderstand it and will ask user to repeat their request without mistakes in key-words
+
+Unhappy paths were implemented using form validation and fallback mechanism
 ## Help
 If you are lost, you can ask bot for help. It will list the options to choose from to proceed.
 # Implementation of requests
@@ -144,14 +146,14 @@ we have created:
 - 9 slots
 - 9 look-up tables
 - 4 forms
-- two step fallbacl
+- two step fallback mechanism
 - JSON database for answers
 
-We used forms to achieve the best dialogue flow and specify information needed by user. Look-up tables were created to ensure better entity spotting. Two step fallback mechanism ensures the proper continuation of dialogue even if the user intent was not recognized
+We used forms to achieve the best dialogue flow and specify information needed by user by asking questions with increasing specificity. Look-up tables were created to ensure better entity spotting. Two step fallback mechanism ensures the proper continuation of dialogue even if the user intent was not recognized
 
 Validate actions in actions.py were used to validate the values in slots for form filling. If the slot is not correctly filled, bot asks the user to try again
 
- Custom actions were used to provide the flexibility in answer choices and to retrieve information from JSON database
+Custom actions were used to provide the flexibility in answer choices and to retrieve information from JSON database
 
 # Work done
 Andrei Nikiforov:
@@ -163,8 +165,7 @@ Mikita Zyhmantovich:
 - Use cases
 - Dialog flow
 - Implementation yml-files (stories, rules)
-- Flask server
 
-Both: Rasa Implementation(actions.py, forms, fallback, pipeline)
+Both: Rasa Implementation(actions.py, forms, fallback, pipeline, Flask server)
 
 We helped each other during the whole project with our respective parts, discussed Implementation and implemented it together. 
