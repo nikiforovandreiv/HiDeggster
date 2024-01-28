@@ -70,6 +70,7 @@ This will train the NLU (Natural Language Understanding) and Core models based o
 Start the Rasa action server to handle custom actions:
 
 ```bash
+cd actions
 rasa run actions
 ```
 
@@ -80,6 +81,7 @@ This command will start the custom action server that executes the actions defin
 Start the Flask server to send messages to the bot and receive answers:
 
 ```bash
+cd ..
 cd webserver
 python app.py
 ```
@@ -90,7 +92,8 @@ This assumes you have a Flask application (e.g., `app.py`) that handles user inp
 
 You can now interact with bot via console using following command:
 ```bash
-rasa shell
+cd.. # if you are in webserver folder
+rasa shell # you must be in sas-project folder to run this
 ```
 To stop the chat use:
 ```bash
